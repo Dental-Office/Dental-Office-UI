@@ -1,0 +1,20 @@
+header {
+    background: rgba(203, 207, 218, 0.473);
+}
+
+h1 {
+    color:blue;
+    /* font-size:100px; */
+    font-style: italic;
+}
+
+footer {
+    padding: 10px 10px 10px 10px;
+    background: rgba(153, 147, 147, 0.473);
+}
+ 
+p {
+     color: blue;
+ }
+
+ 

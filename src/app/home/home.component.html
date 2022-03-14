@@ -1,0 +1,76 @@
+<header>
+    <h1> {{ title }} </h1> 
+</header>
+
+<!-- <div class="container">
+    <div class="row justify-content-end p-3">
+        <div class="col-2">
+            <button class="btn btn-primary">Add new Patient</button>
+        </div>
+    </div>
+    
+    <div class="row justify-content-end p-3">
+        <div class="col-2">
+            <button class="btn btn-primary">List of all Patients</button> 
+        </div> 
+    </div>
+
+    <div class="row justify-content-end p-3">
+        <div class="col-2">
+            <button class="btn btn-primary">Add New Termin</button> 
+        </div> 
+    </div> 
+    
+    <div class="row justify-content-end p-3">
+        <div class="col-2">
+            <button class="btn btn-primary">List of Material</button> 
+        </div> 
+    </div> 
+
+    <div class="row justify-content-end p-3">
+        <div class="col-2">
+            <button class="btn btn-primary">Order new Material</button> 
+        </div> 
+    </div> 
+</div> -->
+
+<div class="container">
+    <div class="row justify-content-end p-3">
+        <div class="col-2">
+            <div class="d-inline-block" ngbDropdown #myDropPatients="ngbDropdown">
+                <button class="btn btn-outline-primary me-2" id="dropdownManual" ngbDropdownAnchor (focus)="myDropPatients.open()">Patients</button>
+                <div ngbDropdownMenu aria-labelledby="dropdownManual">
+                  <button ngbDropdownItem>Add new Patient</button>
+                  <button ngbDropdownItem>List of Patients</button>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row justify-content-end p-3">
+        <div class="col-2">
+            <div class="d-inline-block" ngbDropdown #myDropTermins="ngbDropdown">
+                <button class="btn btn-outline-primary me-2" id="dropdownManual" ngbDropdownAnchor (focus)="myDropTermins.open()">Termins</button>
+                <div ngbDropdownMenu aria-labelledby="dropdownManual">
+                  <button ngbDropdownItem>Add new Termin</button>
+                  <button ngbDropdownItem>List of Termins</button>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row justify-content-end p-3">
+        <div class="col-2">
+            <button class="btn btn-primary">Material</button> 
+        </div> 
+    </div> 
+</div>
+
+
+<footer class="fixed-bottom">
+    <p class="text-center">Copyright &copy; 2022 DentalOffice</p>
+</footer>
