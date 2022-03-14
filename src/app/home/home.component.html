@@ -8,7 +8,7 @@
             <div class="d-inline-block" ngbDropdown #myDropPatients="ngbDropdown">
                 <button class="btn btn-outline-primary me-2" id="dropdownManual" ngbDropdownAnchor (focus)="myDropPatients.open()">Patients</button>
                 <div ngbDropdownMenu aria-labelledby="dropdownManual">
-                  <button ngbDropdownItem>Add new Patient</button>
+                  <button ngbDropdownItem (click)="goToAddNewPatient()">Add new Patient</button>
                   <button ngbDropdownItem>List of Patients</button>
                 </div>
               </div>
