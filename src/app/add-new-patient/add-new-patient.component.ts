@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { PersonService } from '../person.service';
 
 @Component({
   selector: 'app-add-new-patient',
@@ -15,13 +16,14 @@ export class AddNewPatientComponent implements OnInit {
     phoneNumber: new FormControl(''),
   });
 
-  constructor() { }
+  constructor(private personService: PersonService) { }
 
   ngOnInit(): void {
   }
 
   onSubmit() {
+    const personObservable = this.personService.postPerson(this.basicData.value);
+    personObservable.subscribe();
     console.warn(this.basicData.value);
   }
-
 }

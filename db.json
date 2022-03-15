@@ -1,0 +1,18 @@
+{
+  "persons": [
+    {
+      "id": 1,
+      "firstName": "Dragana",
+      "lastName": "Spasojevic",
+      "dateOfBirth": "04.11.1989",
+      "phoneNumber": "065 348 844"
+    },
+    {
+      "firstName": "Dragana",
+      "lastName": "Spasojevic",
+      "dateOfBirth": "04.11.1989",
+      "phoneNumber": "+4917673831708",
+      "id": 2
+    }
+  ]
+}
