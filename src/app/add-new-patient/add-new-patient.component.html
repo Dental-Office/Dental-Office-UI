@@ -1,4 +1,4 @@
-<form>
+<form [formGroup]="basicData" (ngSubmit)="onSubmit()">
   <div class="row justify-content-md-center">
     <div class="col-md-3 text-center">
       <p>Add new Patient</p>
@@ -7,30 +7,34 @@
   <div class="row justify-content-md-center">
     <div class="form-group col-md-3">
       <label for="firstName">First name</label>
-      <input type="firstName" class="form-control" id="firstName" placeholder="Enter first name">
+      <input type="firstName" class="form-control" id="firstName" 
+        placeholder="Enter first name" formControlName="firstName">
     </div>
   </div>
   <div class="row justify-content-md-center">
     <div class="form-group col-md-3">
       <label for="lastName">Last name</label>
-      <input type="lastName" class="form-control" id="lastName" placeholder="Enter last name">
+      <input type="lastName" class="form-control" id="lastName" 
+        placeholder="Enter last name" formControlName="lastName">
     </div>
   </div>
   <div class="row justify-content-md-center">
     <div class="form-group col-md-3">
       <label for="dateOfBirth">Date of birth</label>
-      <input type="dateOfBirth" class="form-control" id="dateOfBirth" placeholder="Enter date of birth">
+      <input type="dateOfBirth" class="form-control" id="dateOfBirth" 
+        placeholder="Enter date of birth" formControlName="dateOfBirth">
     </div>
   </div>
   <div class="row justify-content-md-center">
     <div class="form-group col-md-3">
       <label for="phoneNumber">Phone number</label>
-      <input type="phoneNumber" class="form-control" id="phoneNumber" placeholder="Enter phone number">
+      <input type="phoneNumber" class="form-control" id="phoneNumber" 
+        placeholder="Enter phone number" formControlName="phoneNumber">
     </div>
   </div>
   <div class="container">
     <div class="col-md-12 text-center">
-        <button type="button" class="btn btn-primary">Submit</button>
+        <button type="submit" [disabled]="!basicData.valid" class="btn btn-primary">Submit</button>
     </div>
   </div>
 </form>
