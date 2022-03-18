@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators, MaxValidator } from '@angular/forms';
 import { PersonService } from '../person.service';
 
 @Component({
@@ -9,21 +9,30 @@ import { PersonService } from '../person.service';
 })
 export class AddNewPatientComponent implements OnInit {
 
-  basicData = new FormGroup ({
-    firstName: new FormControl(''),
-    lastName: new FormControl(''),
-    dateOfBirth: new FormControl(''),
-    phoneNumber: new FormControl(''),
-  });
+  basicData: FormGroup;
+  submitted = false;
 
-  constructor(private personService: PersonService) { }
+  constructor(private personService: PersonService) { 
+    this.basicData = new FormGroup ({
+      firstName: new FormControl('', [Validators.required]),
+      lastName: new FormControl(''),
+      dateOfBirth: new FormControl(''),
+      phoneNumber: new FormControl(''),
+    });
+  }
 
   ngOnInit(): void {
+    
   }
 
   onSubmit() {
-    const personObservable = this.personService.postPerson(this.basicData.value);
-    personObservable.subscribe();
-    console.warn(this.basicData.value);
+    this.submitted = true;
+    if(this.basicData.valid){
+      alert('Form submitted succesfully!')
+      const personObservable = this.personService.postPerson(this.basicData.value);
+      personObservable.subscribe();
+      console.warn(this.basicData.value);
+    }
+    
   }
 }

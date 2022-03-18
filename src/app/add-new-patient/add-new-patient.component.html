@@ -5,10 +5,18 @@
     </div>
   </div>
   <div class="row justify-content-md-center">
+    <!-- <span > Basic data validno: {{basicData.valid}}</span>
+    <span > da li je dodirnuto {{basicData.controls['firstName'].touched}}</span>
+    <span > dali je greska {{basicData.controls['firstName'].errors | json}}</span>
+    <span > frst name: {{basicData.controls['firstName'].value}}</span> -->
     <div class="form-group col-md-3">
       <label for="firstName">First name</label>
       <input type="firstName" class="form-control" id="firstName" 
         placeholder="Enter first name" formControlName="firstName">
+        <span class="text-danger"
+          *ngIf="basicData.controls['firstName'].errors?.['required'] && (basicData.controls['firstName'].touched || submitted)">
+          Name is required
+        </span>
     </div>
   </div>
   <div class="row justify-content-md-center">
@@ -34,7 +42,7 @@
   </div>
   <div class="container">
     <div class="col-md-12 text-center">
-        <button type="submit" [disabled]="!basicData.valid" class="btn btn-primary">Submit</button>
+        <button type="submit" [disabled]="!basicData.valid" class="btn btn-primary" (click)="onSubmit()">Submit</button>
     </div>
   </div>
 </form>
