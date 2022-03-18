@@ -10,29 +10,25 @@ import { PersonService } from '../person.service';
 export class AddNewPatientComponent implements OnInit {
 
   basicData: FormGroup;
-  submitted = false;
 
   constructor(private personService: PersonService) { 
     this.basicData = new FormGroup ({
-      firstName: new FormControl('', [Validators.required]),
+      firstName: new FormControl('', [Validators.required, Validators.minLength(2), Validators.pattern('[a-zA-Z]*')]),
       lastName: new FormControl(''),
       dateOfBirth: new FormControl(''),
       phoneNumber: new FormControl(''),
     });
   }
 
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void { }
 
   onSubmit() {
-    this.submitted = true;
     if(this.basicData.valid){
       alert('Form submitted succesfully!')
       const personObservable = this.personService.postPerson(this.basicData.value);
       personObservable.subscribe();
       console.warn(this.basicData.value);
     }
-    
+  
   }
 }

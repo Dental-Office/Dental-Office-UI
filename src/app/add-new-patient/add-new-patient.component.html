@@ -5,18 +5,19 @@
     </div>
   </div>
   <div class="row justify-content-md-center">
-    <!-- <span > Basic data validno: {{basicData.valid}}</span>
-    <span > da li je dodirnuto {{basicData.controls['firstName'].touched}}</span>
-    <span > dali je greska {{basicData.controls['firstName'].errors | json}}</span>
-    <span > frst name: {{basicData.controls['firstName'].value}}</span> -->
     <div class="form-group col-md-3">
       <label for="firstName">First name</label>
       <input type="firstName" class="form-control" id="firstName" 
         placeholder="Enter first name" formControlName="firstName">
-        <span class="text-danger"
-          *ngIf="basicData.controls['firstName'].errors?.['required'] && (basicData.controls['firstName'].touched || submitted)">
-          Name is required
-        </span>
+      <div *ngIf="basicData.controls['firstName'].touched && basicData.controls['firstName'].errors?.['required']" class="alert alert-danger">
+        First name is required!
+      </div>
+      <div *ngIf="basicData.controls['firstName'].touched && basicData.controls['firstName'].errors?.['minlength']" class="alert alert-danger">
+        First name must have more than one character!
+      </div>
+      <div *ngIf="basicData.controls['firstName'].touched && basicData.controls['firstName'].errors?.['pattern']" class="alert alert-danger">
+        First name can't be a number!
+      </div>
     </div>
   </div>
   <div class="row justify-content-md-center">
