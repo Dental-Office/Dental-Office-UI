@@ -44,9 +44,11 @@
         formControlName="dateOfBirth"
         readonly
         (click)="d.toggle()" 
-          name="dp" ngbDatepicker [minDate]="{year: 1920, month: 1, day: 1}" #d="ngbDatepicker">
+        name="dp" ngbDatepicker 
+        (closed)="onCalendarClosed()"
+        [minDate]="{year: 1920, month: 1, day: 1}" #d="ngbDatepicker">
       </div>     
-      <div *ngIf="basicData.controls['dateOfBirth'].touched && basicData.controls['dateOfBirth'].errors?.['required']" class="alert alert-danger">
+      <div *ngIf="calendarClosed && basicData.controls['dateOfBirth'].touched && basicData.controls['dateOfBirth'].errors?.['required']" class="alert alert-danger">
         Please pick the date from calendar!
       </div>
     </div>
