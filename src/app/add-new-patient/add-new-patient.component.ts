@@ -11,13 +11,15 @@ export class AddNewPatientComponent implements OnInit {
 
   basicData: FormGroup;
   calendarClosed = false;
+  isSuccessToastShown = false;
+  isErrorToastShown = false;
 
   constructor(private patientService: PatientService) {
     this.basicData = new FormGroup({
       firstName: new FormControl('', [Validators.required, Validators.minLength(2), Validators.pattern('[a-zA-Z]*')]),
       lastName: new FormControl('', [Validators.required, Validators.minLength(2), Validators.pattern('[a-zA-Z]*')]),
       dateOfBirth: new FormControl('', [Validators.required]),
-      phoneNumber: new FormControl('', [Validators.required, Validators.pattern('^[0-9]*$'), Validators.minLength(10), Validators.maxLength(15)]),
+      phoneNumber: new FormControl('', [Validators.required, Validators.pattern('^[0-9]*$'), Validators.minLength(11), Validators.maxLength(15)]),
     },
       { updateOn: "blur" });
   }
@@ -27,19 +29,13 @@ export class AddNewPatientComponent implements OnInit {
 
   onSubmit() {
     if (this.basicData.valid) {
-
       const patientToBeSaved: Patient = {
         ...this.basicData.value,
         dateOfBirth: this.basicData.value.dateOfBirth.year + "-" + this.basicData.value.dateOfBirth.month + "-" + this.basicData.value.dateOfBirth.day
       }
-      this.patientService.postPatient(patientToBeSaved).subscribe({
-        next: () => {
-          alert('Patient successfully saved!')
-        },
-        error: () => {
-          alert('Patiet is not saved!')
-        }
-      });
+      this.patientService.postPatient(patientToBeSaved).subscribe(
+        () => this.isSuccessToastShown = true,
+        () => this.isErrorToastShown = true);
     }
   }
 

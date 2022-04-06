@@ -74,7 +74,15 @@
   </div>
   <div class="container">
     <div class="col-md-12 text-center">
-        <button type="submit" [disabled]="!basicData.valid" class="btn btn-primary">Submit</button>
+        <button type="submit" [disabled]="!basicData.valid" class="btn btn-primary">
+          Submit
+        </button>
     </div>
   </div>
+  <ngb-toast [autohide]="true" class="toast-container" style="z-index: 1200" [delay]="4000" (hidden)="isErrorToastShown = false" *ngIf="isErrorToastShown">
+    Patient is not saved!
+  </ngb-toast>
+  <ngb-toast [autohide]="true" class="toast-container" style="z-index: 1200" [delay]="4000" (hidden)="isSuccessToastShown = false" *ngIf="isSuccessToastShown">
+    Patient is saved!
+  </ngb-toast>
 </form>

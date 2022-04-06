@@ -2,3 +2,8 @@
 @import "~bootstrap-icons/font/bootstrap-icons.css";
 
 html, div { background-color: rgb(223, 230, 235); }
+
+.toast-body {
+    background-color: #f82f43 !important;
+
+}
