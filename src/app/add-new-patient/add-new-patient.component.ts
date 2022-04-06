@@ -13,6 +13,7 @@ export class AddNewPatientComponent implements OnInit {
   calendarClosed = false;
   isSuccessToastShown = false;
   isErrorToastShown = false;
+  loading = false;
 
   constructor(private patientService: PatientService) {
     this.basicData = new FormGroup({
@@ -28,14 +29,15 @@ export class AddNewPatientComponent implements OnInit {
   }
 
   onSubmit() {
+    this.loading = true;
     if (this.basicData.valid) {
       const patientToBeSaved: Patient = {
         ...this.basicData.value,
         dateOfBirth: this.basicData.value.dateOfBirth.year + "-" + this.basicData.value.dateOfBirth.month + "-" + this.basicData.value.dateOfBirth.day
       }
       this.patientService.postPatient(patientToBeSaved).subscribe(
-        () => this.isSuccessToastShown = true,
-        () => this.isErrorToastShown = true);
+        () => (this.isSuccessToastShown = true, this.loading = false),
+        () => (this.isErrorToastShown = true, this.loading = false));
     }
   }
 
