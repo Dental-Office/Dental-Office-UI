@@ -80,10 +80,10 @@
         </button>
     </div>
   </div>
-  <ngb-toast [autohide]="true" class="toast-container" style="z-index: 1200" [delay]="4000" (hidden)="isErrorToastShown = false" *ngIf="isErrorToastShown">
+  <ngb-toast [autohide]="true" class="toast-container-error" [delay]="1000000" (hidden)="isErrorToastShown = false" *ngIf="isErrorToastShown">
     Patient is not saved!
   </ngb-toast>
-  <ngb-toast [autohide]="true" class="toast-container" style="z-index: 1200" [delay]="4000" (hidden)="isSuccessToastShown = false" *ngIf="isSuccessToastShown">
+  <ngb-toast [autohide]="true" class="toast-container-success" [delay]="4000" (hidden)="isSuccessToastShown = false" *ngIf="isSuccessToastShown">
     Patient is saved!
   </ngb-toast>
 </form>
