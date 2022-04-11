@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Patient } from '../Patient';
 import { PatientService } from '../patient.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-add-new-patient',
   templateUrl: './add-new-patient.component.html',
@@ -15,7 +16,7 @@ export class AddNewPatientComponent implements OnInit {
   isErrorToastShown = false;
   loading = false;
 
-  constructor(private patientService: PatientService) {
+  constructor(private patientService: PatientService, private router: Router) {
     this.basicData = new FormGroup({
       firstName: new FormControl('', [Validators.required, Validators.minLength(2), Validators.pattern('[a-zA-Z]*')]),
       lastName: new FormControl('', [Validators.required, Validators.minLength(2), Validators.pattern('[a-zA-Z]*')]),
@@ -33,11 +34,21 @@ export class AddNewPatientComponent implements OnInit {
     if (this.basicData.valid) {
       const patientToBeSaved: Patient = {
         ...this.basicData.value,
-        dateOfBirth: this.basicData.value.dateOfBirth.year + "-" + this.basicData.value.dateOfBirth.month + "-" + this.basicData.value.dateOfBirth.day
+        dateOfBirth: this.basicData.value.dateOfBirth.year + "-" + 
+          this.basicData.value.dateOfBirth.month + "-" + 
+          this.basicData.value.dateOfBirth.day
       }
-      this.patientService.postPatient(patientToBeSaved).subscribe(
-        () => (this.isSuccessToastShown = true, this.loading = false),
-        () => (this.isErrorToastShown = true, this.loading = false));
+      this.patientService.postPatient(patientToBeSaved).subscribe({
+        next: () => {
+          this.isSuccessToastShown = true;
+          this.loading = false;
+          this.router.navigate(['/homePage']);
+        },
+        error: () => {
+            this.isErrorToastShown = true;
+            this.loading = false;
+        }
+      });
     }
   }
 
