@@ -20,6 +20,14 @@ export class PatientService {
   getPatients(): Observable<Patient[]> {
     return this.http.get<Patient[]>(this.apiUrl)
   }
+
+  delete(id?: number): Observable<object> {
+    return this.http.delete(
+      this.apiUrl + '/' + id
+    );
+  }
+
+ 
 }
 
 

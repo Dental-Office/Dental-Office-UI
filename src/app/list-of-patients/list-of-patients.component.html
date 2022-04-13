@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <div class="row justify-content-center">
+                <h1>List of patients </h1>
+                <br>
+                <br>
+            </div>
+            <div style="overflow-x:auto">
+                <table>
+                    <tr>
+                        <th>Id</th>
+                        <th>First name</th>
+                        <th>Last name</th>
+                        <th>Date of birth</th>
+                        <th>Phone number</th>
+                    </tr>
+                    <tr *ngFor="let d of data | async" [attr.id]="d.id">
+                        <td>{{ d.id }}</td>
+                        <td>{{ d.firstName }}</td>
+                        <td>{{ d.lastName }}</td>
+                        <td>{{ d.dateOfBirth }}</td>
+                        <td>{{ d.phoneNumber }}</td>
+                        <td><button id="remove" class="btn btn-danger" (click)="delete(d.id)">Delete</button></td>
+                        <td><button id="edit" class="btn btn-success">Edit</button></td>
+                        
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

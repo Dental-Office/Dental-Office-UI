@@ -12,13 +12,4 @@ html, div { background-color: rgb(223, 230, 235); }
         z-index: 1200;
     }
 
-.toast-container-success 
-    .toast-body {
-        background-color: rgba(0, 128, 0, 0.521);
-        left: 80%;
-        position: fixed;
-        transform: translate(-50%, -300px);
-        z-index: 1200;
-    }
-
 

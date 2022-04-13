@@ -16,6 +16,10 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/addNewPatient']);
   }
 
+  goToListOfPatients(): void {
+    this.router.navigate(['/listOfPatients']);
+  }
+
   ngOnInit(): void {
   }
 

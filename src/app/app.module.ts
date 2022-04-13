@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AddNewPatientComponent } from './add-new-patient/add-new-patient.component';
 import { AppRoutingModule } from './app-routing.module';
+import { ListOfPatientsComponent } from './list-of-patients/list-of-patients.component';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { AppRoutingModule } from './app-routing.module';
     AppComponent,
     HomeComponent,
     AddNewPatientComponent,
+    ListOfPatientsComponent,
   ],
   imports: [
     BrowserModule,
