@@ -1,7 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ControlContainer, Form, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { Patient } from '../Patient';
 import { PatientService } from '../patient.service';
 
@@ -29,6 +27,11 @@ export class EditPatientComponent implements OnInit {
     });
   }
 
-  
-
+  editPatient() {
+    if(this.patient) {
+      this.patientService.editPatient(this.id, this.patient).subscribe((patient) => {
+        this.patient = patient;
+      });
+    }
+  }
 }

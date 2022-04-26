@@ -13,7 +13,7 @@ export class PatientService {
   constructor(private http:HttpClient) {
    }
 
-  postPatient(patient: Patient): Observable<Patient> {
+  createPatient(patient: Patient): Observable<Patient> {
     return this.http.post<Patient>(this.apiUrl, patient);
   }
 
@@ -29,6 +29,10 @@ export class PatientService {
 
   getPatient(id: number): Observable<Patient> {
     return this.http.get<Patient>(this.apiUrl + '/' + id);
+  }
+
+  editPatient(id: number, patient: Patient): Observable<Patient> {
+    return this.http.put<Patient>(this.apiUrl + '/' + id, patient);
   }
  
 }

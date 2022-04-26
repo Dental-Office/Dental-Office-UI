@@ -38,7 +38,7 @@ export class AddNewPatientComponent implements OnInit {
           this.basicData.value.dateOfBirth.month + "-" + 
           this.basicData.value.dateOfBirth.day
       }
-      this.patientService.postPatient(patientToBeSaved).subscribe({
+      this.patientService.createPatient(patientToBeSaved).subscribe({
         next: () => {
           this.isSuccessToastShown = true;
           this.loading = false;
