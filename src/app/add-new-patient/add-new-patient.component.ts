@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Patient } from '../Patient';
 import { PatientService } from '../patient.service';
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-new-patient.component.css']
 })
 export class AddNewPatientComponent implements OnInit {
-
+  
   basicData: FormGroup;
   calendarClosed = false;
   isSuccessToastShown = false;

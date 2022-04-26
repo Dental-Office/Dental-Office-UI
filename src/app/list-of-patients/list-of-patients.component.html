@@ -22,7 +22,7 @@
                         <td>{{ d.dateOfBirth }}</td>
                         <td>{{ d.phoneNumber }}</td>
                         <td><button id="remove" class="btn btn-danger" (click)="delete(d.id)">Delete</button></td>
-                        <td><button id="edit" class="btn btn-success">Edit</button></td>
+                        <td><button id="edit" class="btn btn-success" (click)="goToEditPage(d.id)">Edit</button></td>
                         
                     </tr>
                 </table>

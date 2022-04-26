@@ -9,6 +9,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AddNewPatientComponent } from './add-new-patient/add-new-patient.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ListOfPatientsComponent } from './list-of-patients/list-of-patients.component';
+import { EditPatientComponent } from './edit-patient/edit-patient.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { ListOfPatientsComponent } from './list-of-patients/list-of-patients.com
     HomeComponent,
     AddNewPatientComponent,
     ListOfPatientsComponent,
+    EditPatientComponent,
   ],
   imports: [
     BrowserModule,

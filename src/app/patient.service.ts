@@ -27,6 +27,9 @@ export class PatientService {
     );
   }
 
+  getPatient(id: number): Observable<Patient> {
+    return this.http.get<Patient>(this.apiUrl + '/' + id);
+  }
  
 }
 
