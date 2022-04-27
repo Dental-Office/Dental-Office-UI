@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Patient } from '../Patient';
@@ -68,9 +68,6 @@ export class EditPatientComponent implements OnInit {
     )}
   }
       
-    
-  
-
   onCalendarClosed() {
     this.calendarClosed = true;
   }

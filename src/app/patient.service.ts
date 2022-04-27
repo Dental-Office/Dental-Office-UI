@@ -21,7 +21,7 @@ export class PatientService {
     return this.http.get<Patient[]>(this.apiUrl)
   }
 
-  delete(id?: number): Observable<object> {
+  delete(id: number): Observable<object> {
     return this.http.delete(
       this.apiUrl + '/' + id
     );

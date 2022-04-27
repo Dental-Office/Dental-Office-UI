@@ -11,7 +11,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { ListOfPatientsComponent } from './list-of-patients/list-of-patients.component';
 import { EditPatientComponent } from './edit-patient/edit-patient.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,

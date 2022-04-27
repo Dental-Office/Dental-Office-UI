@@ -1,5 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PatientService } from '../patient.service';
 import { Patient } from '../Patient';
@@ -21,7 +20,7 @@ export class ListOfPatientsComponent implements OnInit {
   }
 
   delete(id?: number){
-    this.patientService.delete(id).subscribe(() => {
+    this.patientService.delete(id!).subscribe(() => {
       this.data = this.patientService.getPatients();
     });
   }
@@ -29,5 +28,4 @@ export class ListOfPatientsComponent implements OnInit {
   goToEditPage(id: number | undefined): void {
     this.router.navigate(['/editPatient'], {state: { patientId: id }});
   }
-
 }
