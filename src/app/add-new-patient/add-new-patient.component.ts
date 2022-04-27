@@ -12,7 +12,6 @@ export class AddNewPatientComponent implements OnInit {
   
   basicData: FormGroup;
   calendarClosed = false;
-  isSuccessToastShown = false;
   isErrorToastShown = false;
   loading = false;
 
@@ -41,8 +40,6 @@ export class AddNewPatientComponent implements OnInit {
       }
       this.patientService.createPatient(patientToBeSaved).subscribe({
         next: () => {
-          this.isSuccessToastShown = true;
-          this.loading = false;
           this.router.navigate(['/homePage']);
         },
         error: () => {

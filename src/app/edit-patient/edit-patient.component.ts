@@ -14,6 +14,8 @@ export class EditPatientComponent implements OnInit {
   id: number;
   patientFormGroup: FormGroup;
   calendarClosed = false;
+  isErrorToastShown = false;
+  loading = false;
 
   constructor(private patientService: PatientService, private router: Router) {
     this.id = this.router.getCurrentNavigation()?.extras.state?.['patientId'];
@@ -46,6 +48,7 @@ export class EditPatientComponent implements OnInit {
   }
 
   editPatient() { 
+    this.loading = true;
     if (this.patientFormGroup.valid) {
       const patient: Patient = {
         ...this.patientFormGroup.value,
@@ -53,15 +56,20 @@ export class EditPatientComponent implements OnInit {
           this.patientFormGroup.value.dateOfBirth.month + "-" + 
           this.patientFormGroup.value.dateOfBirth.day
       }
-      this.patientService.editPatient(this.id, patient).subscribe((patient) => {
-        this.patientFormGroup.get("firstName")?.setValue(patient.firstName);
-        this.patientFormGroup.get("lastName")?.setValue(patient.lastName);
-        this.patientFormGroup.get("dateOfBirth")?.setValue(patient.dateOfBirth);
-        this.patientFormGroup.get("phoneNumber")?.setValue(patient.phoneNumber);
-        this.router.navigate(['/listOfPatients']);
-      });
-    }
+      this.patientService.editPatient(this.id, patient).subscribe({
+        next: () => {
+          this.router.navigate(['/listOfPatients']);
+        },
+        error: () => {
+          this.isErrorToastShown = true;
+          this.loading = false;
+        }
+      }
+    )}
   }
+      
+    
+  
 
   onCalendarClosed() {
     this.calendarClosed = true;

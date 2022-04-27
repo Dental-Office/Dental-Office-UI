@@ -71,6 +71,12 @@
     </div>
   </div>
   <div class="col-md-12 text-center">
-    <button class="btn btn-primary" (click)="editPatient()">Save changes</button>
+    <button class="btn btn-primary" [disabled]="!patientFormGroup.valid || loading" (click)="editPatient()">
+      Save changes
+      <span class="spinner-border spinner-border-sm" role="status" (hidden)="loading = false" *ngIf="loading"></span>
+    </button>
   </div>
+  <ngb-toast [autohide]="true" class="toast-container-error" [delay]="10000" (hidden)="isErrorToastShown = false" *ngIf="isErrorToastShown">
+    Patient is not edited!
+  </ngb-toast>
 </ng-container>
