@@ -7,7 +7,7 @@
   <div class="row justify-content-md-center">
     <div class="form-group col-md-3">
       <label for="firstName">First name</label>
-      <input type="firstName" class="form-control" id="firstName" 
+      <input type="text" class="form-control" id="firstName" 
         placeholder="Enter first name" formControlName="firstName">
       <div *ngIf="basicData.controls['firstName'].touched && basicData.controls['firstName'].errors?.['required']" class="alert alert-danger">
         First name is required!
@@ -23,7 +23,7 @@
   <div class="row justify-content-md-center">
     <div class="form-group col-md-3">
       <label for="lastName">Last name</label>
-      <input type="lastName" class="form-control" id="lastName" 
+      <input type="text" class="form-control" id="lastName" 
         placeholder="Enter last name" formControlName="lastName">
         <div *ngIf="basicData.controls['lastName'].touched && basicData.controls['lastName'].errors?.['required']" class="alert alert-danger">
           Last name is required!
@@ -56,7 +56,7 @@
   <div class="row justify-content-md-center">
     <div class="form-group col-md-3">
       <label for="phoneNumber">Phone number</label>
-      <input type="phoneNumber" class="form-control" id="phoneNumber" 
+      <input type="text" class="form-control" id="phoneNumber" 
         placeholder="Enter phone number" formControlName="phoneNumber">
       <div *ngIf="basicData.controls['phoneNumber'].touched && basicData.controls['phoneNumber'].errors?.['required']" class="alert alert-danger">
         Phone number is required!
@@ -65,7 +65,7 @@
         Please enter a number!
       </div>
       <div *ngIf="basicData.controls['phoneNumber'].touched && basicData.controls['phoneNumber'].errors?.['minlength']" class="alert alert-danger">
-        Phone number must have ten numbers!
+        Phone number must have at least 11 numbers and not more than 15 numbers!
       </div>
       <div *ngIf="basicData.controls['phoneNumber'].touched && basicData.controls['phoneNumber'].errors?.['maxlength']" class="alert alert-danger">
         Phone number must have ten numbers!

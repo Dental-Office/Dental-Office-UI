@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Patient } from '../Patient';
 import { PatientService } from '../patient.service';
@@ -27,6 +27,7 @@ export class AddNewPatientComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
   }
 
   onSubmit() {

@@ -1,38 +1,76 @@
-<div class="row justify-content-md-center">
-  <div class="col-md-3 text-center">
-    <p>Edit a Patient</p>
-  </div>
-</div>
-<div class="row justify-content-md-center">
-  <div class="form-group col-md-3">
-    <label for="firstName">First name</label>
-    <input type="text" class="form-control" 
-      [(ngModel)]="patient && patient.firstName">
-  </div>
-</div>
-<div class="row justify-content-md-center">
-  <div class="form-group col-md-3">
-    <label for="lastName">Last name</label>
-    <input type="text" class="form-control" 
-      [(ngModel)]="patient && patient.lastName">
-  </div>
-</div>
-<div class="row justify-content-md-center">
-  <div class="form-group col-md-3">
-    <label for="dateOfBirth">Date of birth</label>
-    <input type="text" class="form-control" 
-      [(ngModel)]="patient && patient.dateOfBirth">
-  </div>
-</div>
-<div class="row justify-content-md-center">
-  <div class="form-group col-md-3">
-    <label for="phoneNumber">Phone number</label>
-    <input type="text" class="form-control" 
-      [(ngModel)]="patient && patient.phoneNumber">
-  </div>
-</div>
-<div class="col-md-12 text-center">
-  <button class="btn btn-primary" (click)="editPatient()">Save changes</button>
-</div>
 
-
+<ng-container [formGroup]="patientFormGroup">
+  <div class="row justify-content-md-center">
+    <div class="col-md-3 text-center">
+      <p>Edit a Patient</p>
+    </div>
+  </div>
+  <div class="row justify-content-md-center">
+    <div class="form-group col-md-3">
+      <label for="firstName">First name</label>
+      <input type="text" class="form-control" 
+      formControlName="firstName">   
+      <div *ngIf="patientFormGroup.controls['firstName'].touched && patientFormGroup.controls['firstName'].errors?.['required']" class="alert alert-danger">
+        First name is required!
+      </div>
+      <div *ngIf="patientFormGroup.controls['firstName'].touched && patientFormGroup.controls['firstName'].errors?.['minlength']" class="alert alert-danger">
+        First name must have more than one character!
+      </div>
+      <div *ngIf="patientFormGroup.controls['firstName'].touched && patientFormGroup.controls['firstName'].errors?.['pattern']" class="alert alert-danger">
+        First name can't be a number!
+      </div> 
+    </div>
+  </div>
+  <div class="row justify-content-md-center">
+    <div class="form-group col-md-3">
+      <label for="lastName">Last name</label>
+      <input type="text" class="form-control"
+      formControlName="lastName">
+      <div *ngIf="patientFormGroup.controls['lastName'].touched && patientFormGroup.controls['lastName'].errors?.['required']" class="alert alert-danger">
+        Last name is required!
+      </div>
+      <div *ngIf="patientFormGroup.controls['lastName'].touched && patientFormGroup.controls['lastName'].errors?.['minlength']" class="alert alert-danger">
+        Last name must have more than one character!
+      </div>
+      <div *ngIf="patientFormGroup.controls['lastName'].touched && patientFormGroup.controls['lastName'].errors?.['pattern']" class="alert alert-danger">
+        Last name can't be a number!
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-md-center">
+    <div class="form-group col-md-3">
+      <label for="dateOfBirth">Date of birth</label>
+      <input type="text" class="form-control" 
+      formControlName="dateOfBirth" readonly
+      (click)="d.toggle()" 
+      name="dp" ngbDatepicker 
+      (closed)="onCalendarClosed()"
+      [minDate]="{year: 1920, month: 1, day: 1}" #d="ngbDatepicker">
+    </div>     
+    <div *ngIf="calendarClosed && patientFormGroup.controls['dateOfBirth'].touched && patientFormGroup.controls['dateOfBirth'].errors?.['required']" class="alert alert-danger">
+      Please pick the date from calendar!
+    </div>
+  </div>
+  <div class="row justify-content-md-center">
+    <div class="form-group col-md-3">
+      <label for="phoneNumber">Phone number</label>
+      <input type="text" class="form-control"
+      formControlName="phoneNumber">
+      <div *ngIf="patientFormGroup.controls['phoneNumber'].touched && patientFormGroup.controls['phoneNumber'].errors?.['required']" class="alert alert-danger">
+        Phone number is required!
+      </div>
+      <div *ngIf="patientFormGroup.controls['phoneNumber'].touched && patientFormGroup.controls['phoneNumber'].errors?.['pattern']" class="alert alert-danger">
+        Please enter a number!
+      </div>
+      <div *ngIf="patientFormGroup.controls['phoneNumber'].touched && patientFormGroup.controls['phoneNumber'].errors?.['minlength']" class="alert alert-danger">
+        Phone number must have at least 11 numbers and not more than 15 numbers!
+      </div>
+      <div *ngIf="patientFormGroup.controls['phoneNumber'].touched && patientFormGroup.controls['phoneNumber'].errors?.['maxlength']" class="alert alert-danger">
+        Phone number must have ten numbers!
+      </div> 
+    </div>
+  </div>
+  <div class="col-md-12 text-center">
+    <button class="btn btn-primary" (click)="editPatient()">Save changes</button>
+  </div>
+</ng-container>
