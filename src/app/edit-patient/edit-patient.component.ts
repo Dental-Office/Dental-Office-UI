@@ -67,6 +67,10 @@ export class EditPatientComponent implements OnInit {
       }
     )}
   }
+
+  goBackToThePatientList() {
+    this.router.navigate(['/listOfPatients']);
+  }
       
   onCalendarClosed() {
     this.calendarClosed = true;

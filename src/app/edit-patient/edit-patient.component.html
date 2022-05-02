@@ -74,6 +74,7 @@
       Save changes
       <span class="spinner-border spinner-border-sm" role="status" (hidden)="loading = false" *ngIf="loading"></span>
     </button>
+    <button class="btn btn-primary" (click)="goBackToThePatientList()">Go back</button>
   </div>
   <ngb-toast [autohide]="true" class="toast-container-error" [delay]="10000" (hidden)="isErrorToastShown = false" *ngIf="isErrorToastShown">
     Patient is not edited!
