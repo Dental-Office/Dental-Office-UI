@@ -17,7 +17,7 @@ import { EditPatientComponent } from './edit-patient/edit-patient.component';
     HomeComponent,
     AddNewPatientComponent,
     ListOfPatientsComponent,
-    EditPatientComponent,
+    EditPatientComponent
   ],
   imports: [
     BrowserModule,

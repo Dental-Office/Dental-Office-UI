@@ -19,6 +19,9 @@ export class EditPatientComponent implements OnInit {
 
   constructor(private patientService: PatientService, private router: Router) {
     this.id = this.router.getCurrentNavigation()?.extras.state?.['patientId'];
+    if(!this.id) {
+      this.router.navigate(['/listOfPatients']);
+    }
     this.patientFormGroup = new FormGroup({
       firstName: new FormControl('', [Validators.required, Validators.minLength(2), Validators.pattern('[a-zA-Z]*')]),
       lastName: new FormControl('', [Validators.required, Validators.minLength(2), Validators.pattern('[a-zA-Z]*')]),
@@ -66,10 +69,6 @@ export class EditPatientComponent implements OnInit {
         }
       }
     )}
-  }
-
-  goBackToThePatientList() {
-    this.router.navigate(['/listOfPatients']);
   }
       
   onCalendarClosed() {
