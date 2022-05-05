@@ -1,0 +1,14 @@
+nav {
+    background: rgba(153, 147, 147, 0.473);
+    padding: 10px 50px;
+}
+
+a {
+    color: blue;
+    font-style: italic;
+    font-size: larger;
+    position: static !important;
+}
+
+
+

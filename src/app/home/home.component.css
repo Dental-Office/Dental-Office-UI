@@ -1,7 +1,3 @@
-header {
-    background: rgba(203, 207, 218, 0.473);
-}
-
 h1 {
     color:blue;
     /* font-size:100px; */
@@ -13,8 +9,9 @@ footer {
     background: rgba(153, 147, 147, 0.473);
 }
  
-p {
-     color: blue;
+img {
+    width: 2560px;
+    height: 650px;
 }
 
  

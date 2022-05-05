@@ -10,15 +10,8 @@ export class HomeComponent implements OnInit {
 
   title: string = 'Dental clinic';
   
-  constructor(private router: Router) { }
-
-  goToAddNewPatient(): void {
-    this.router.navigate(['/addNewPatient']);
-  }
-
-  goToListOfPatients(): void {
-    this.router.navigate(['/listOfPatients']);
-  }
+  constructor() { }
+  image =  'assets/image.jpg';
 
   ngOnInit(): void {
   }

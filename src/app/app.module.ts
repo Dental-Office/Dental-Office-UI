@@ -10,6 +10,7 @@ import { AddNewPatientComponent } from './add-new-patient/add-new-patient.compon
 import { AppRoutingModule } from './app-routing.module';
 import { ListOfPatientsComponent } from './list-of-patients/list-of-patients.component';
 import { EditPatientComponent } from './edit-patient/edit-patient.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { EditPatientComponent } from './edit-patient/edit-patient.component';
     HomeComponent,
     AddNewPatientComponent,
     ListOfPatientsComponent,
-    EditPatientComponent
+    EditPatientComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
