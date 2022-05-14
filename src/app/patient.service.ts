@@ -17,8 +17,8 @@ export class PatientService {
     return this.http.post<Patient>(this.apiUrl, patient);
   }
 
-  getPatients(): Observable<Patient[]> {
-    return this.http.get<Patient[]>(this.apiUrl)
+  getPatients(searchTerm: string = ""): Observable<Patient[]> {
+    return this.http.get<Patient[]>(this.apiUrl + "?searchTerm=" + searchTerm);
   }
 
   delete(id: number): Observable<object> {
@@ -34,7 +34,7 @@ export class PatientService {
   editPatient(id: number, patient: Patient): Observable<Patient> {
     return this.http.put<Patient>(this.apiUrl + '/' + id, patient);
   }
- 
+  
 }
 
 

@@ -1,0 +1,13 @@
+p{
+  color:blue;
+  font-size:xx-large;
+  font-style: italic;
+}
+table,
+th,
+td {
+  font-family: Arial, sans-serif;
+  text-align: left;
+  border: 1px solid blue;
+  padding: 10px;
+}

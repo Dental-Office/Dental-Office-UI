@@ -1,0 +1,137 @@
+<form>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-8">
+                <div class="mb-3 row">
+                    <label for="table-filtering-search" class="col-xs-3 col-sm-auto col-form-label">Full text search:</label>
+                    <div class="col-xs-3 col-sm-auto">
+                        <input class="form-control" type="text" name="searchTerm" [(ngModel)]="searchTerm" placeholder="Search by first name" (change)="findAllFiltered($event)">
+                    </div>
+                </div>
+
+                <div style="overflow-x:auto">
+                    <table>
+                        <tr>
+                            <th>Id</th>
+                            <th>First name</th>
+                            <th>Last name</th>
+                            <th>Date of birth</th>
+                            <th>Phone number</th>
+                        </tr>
+                        <tr *ngFor="let d of patients" [attr.id]="d.id">
+                            <td class="a">{{ d.id }}</td>
+                            <td class="a">{{ d.firstName }}</td>
+                            <td class="a">{{ d.lastName }}</td>
+                            <td class="a">{{ d.dateOfBirth }}</td>
+                            <td class="a">{{ d.phoneNumber }}</td>
+                            <td><input type="checkbox"></td>       
+                        </tr>
+                    </table>
+                </div>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-10">
+                            <div class="mb-3 row">
+                                <ngb-pagination class="d-flex" [collectionSize]="70"  [(page)]="page"></ngb-pagination>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+
+
+<!-- <form [formGroup]="terminData" (ngSubmit)="onSubmit()">
+    <div class="row justify-content-md-center">
+        <div class="col-md-3 text-center">
+        <p>Add new Termin</p>
+        </div>
+    </div>
+    <div class="row justify-content-md-center">
+        <div class="form-group col-md-3">
+            <label for="firstName">First name</label>
+            <input type="text" class="form-control" id="firstName" 
+            placeholder="Enter first name" formControlName="firstName">
+            <div *ngIf="terminData.controls['firstName'].touched && terminData.controls['firstName'].errors?.['required']" class="alert alert-danger">
+                First name is required!
+              </div>
+              <div *ngIf="terminData.controls['firstName'].touched && terminData.controls['firstName'].errors?.['minlength']" class="alert alert-danger">
+                First name must have more than one character!
+              </div>
+              <div *ngIf="terminData.controls['firstName'].touched && terminData.controls['firstName'].errors?.['pattern']" class="alert alert-danger">
+                First name can't be a number!
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-md-center">
+        <div class="form-group col-md-3">
+            <label for="lastName">Last name</label>
+            <input type="text" class="form-control" id="lastName" 
+            placeholder="Enter last name" formControlName="lastName">
+            <div *ngIf="terminData.controls['lastName'].touched && terminData.controls['lastName'].errors?.['required']" class="alert alert-danger">
+                Last name is required!
+              </div>
+              <div *ngIf="terminData.controls['lastName'].touched && terminData.controls['lastName'].errors?.['minlength']" class="alert alert-danger">
+                Last name must have more than one character!
+              </div>
+              <div *ngIf="terminData.controls['lastName'].touched && terminData.controls['lastName'].errors?.['pattern']" class="alert alert-danger">
+                Last name can't be a number!
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-md-center">
+        <div class="form-group col-md-3">
+        <label for="phoneNumber">Phone number</label>
+        <input type="text" class="form-control" id="phoneNumber" 
+            placeholder="Enter phone number" formControlName="phoneNumber">
+            <div *ngIf="terminData.controls['phoneNumber'].touched && terminData.controls['phoneNumber'].errors?.['required']" class="alert alert-danger">
+                Phone number is required!
+              </div>
+              <div *ngIf="terminData.controls['phoneNumber'].touched && terminData.controls['phoneNumber'].errors?.['pattern']" class="alert alert-danger">
+                Please enter a number!
+              </div>
+              <div *ngIf="terminData.controls['phoneNumber'].touched && terminData.controls['phoneNumber'].errors?.['minlength']" class="alert alert-danger">
+                Phone number must have at least 11 numbers and not more than 15 numbers!
+              </div>
+              <div *ngIf="terminData.controls['phoneNumber'].touched && terminData.controls['phoneNumber'].errors?.['maxlength']" class="alert alert-danger">
+                Phone number must have ten numbers!
+              </div> 
+        </div>
+    </div>
+    <div class="row justify-content-md-center">
+        <div class="form-group col-md-3">
+        <label for="dateOfTermin">Date of Termin</label>
+        <div class="input-group">
+            <input class="form-control" placeholder="yyyy-mm-dd"
+            formControlName="dateOfTermin"
+            readonly
+            (click)="d.toggle()" 
+            name="dp" ngbDatepicker 
+            (closed)="onCalendarClosed()"
+            [minDate]="{year: 1920, month: 1, day: 1}" #d="ngbDatepicker">
+            <div *ngIf="calendarClosed && terminData.controls['dateOfTermin'].touched && terminData.controls['dateOfTermin'].errors?.['required']" class="alert alert-danger">
+                Please pick the date from calendar!
+            </div>
+        </div>     
+        </div>
+    </div>
+    <div class="row justify-content-md-center">
+        <div class="form-group col-md-3">
+            <label for="timeOfTermin">Time of Termin</label>
+            <ngb-timepicker [(ngModel)]="time" placeholder="HH-MM" formControlName="timeOfTermin"></ngb-timepicker>
+            <div *ngIf="terminData.controls['timeOfTermin'].touched && terminData.controls['timeOfTermin'].errors?.['required']" class="alert alert-danger">
+                Please insert the time in fields!
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="col-md-12 text-center">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+</form> -->
+

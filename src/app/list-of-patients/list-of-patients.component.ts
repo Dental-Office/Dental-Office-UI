@@ -12,11 +12,19 @@ import { Router } from '@angular/router';
 export class ListOfPatientsComponent implements OnInit {
 
   data: Observable<Patient[]> | undefined;
+  patients: Patient[] = [];
+  searchTerm: string = "";
 
   constructor(private patientService: PatientService, private router: Router) { }
 
   ngOnInit(): void {
-    this.data = this.patientService.getPatients();
+    this.patientService.getPatients()
+      .subscribe(patients => this.patients = patients);
+  }
+
+  findAllFiltered($event: any) {
+    this.patientService.getPatients($event.target.value)
+      .subscribe(patients => this.patients = patients);
   }
 
   delete(id?: number){
