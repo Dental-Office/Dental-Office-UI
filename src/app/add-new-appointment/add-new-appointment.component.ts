@@ -3,11 +3,11 @@ import { Patient } from '../Patient';
 import { PatientService } from '../patient.service';
 
 @Component({
-  selector: 'app-add-new-termin',
-  templateUrl: './add-new-termin.component.html',
-  styleUrls: ['./add-new-termin.component.css']
+  selector: 'app-add-new-appointment',
+  templateUrl: './add-new-appointment.component.html',
+  styleUrls: ['./add-new-appointment.component.css']
 })
-export class AddNewTerminComponent implements OnInit {
+export class AddNewAppointmentComponent implements OnInit {
 
   // calendarClosed = false;
   // terminData: FormGroup;

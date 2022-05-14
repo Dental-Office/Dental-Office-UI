@@ -11,7 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ListOfPatientsComponent } from './list-of-patients/list-of-patients.component';
 import { EditPatientComponent } from './edit-patient/edit-patient.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { AddNewTerminComponent } from './add-new-termin/add-new-termin.component';
+import { AddNewAppointmentComponent } from './add-new-appointment/add-new-appointment.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,7 @@ import { AddNewTerminComponent } from './add-new-termin/add-new-termin.component
     ListOfPatientsComponent,
     EditPatientComponent,
     NavbarComponent,
-    AddNewTerminComponent
+    AddNewAppointmentComponent
   ],
   imports: [
     BrowserModule,
