@@ -10,7 +10,7 @@ import { PatientService } from '../patient.service';
 export class AddNewAppointmentComponent implements OnInit {
 
   // calendarClosed = false;
-  // terminData: FormGroup;
+  // appointmentData: FormGroup;
   patients: Patient[] = [];
   searchTerm: string = "";
   page!: number;
@@ -19,16 +19,13 @@ export class AddNewAppointmentComponent implements OnInit {
   constructor(private patientService: PatientService) {
   }
   
-  // constructor(config: NgbTimepickerConfig, private patientService: PatientService, private terminService: TerminService, private router: Router) {
+  // constructor(config: NgbTimepickerConfig, private patientService: PatientService, private appointmentService: AppointmentService, private router: Router) {
   //   config.seconds = false;
   //   config.spinners = false;
-  //   this.terminData = new FormGroup ({
-  //     idOfPatient: new FormControl('', [Validators.required]),
-  //     firstName: new FormControl('', [Validators.required, Validators.minLength(2), Validators.pattern('[a-zA-Z]*')]),
-  //     lastName: new FormControl('', [Validators.required, Validators.minLength(2), Validators.pattern('[a-zA-Z]*')]),
-  //     phoneNumber: new FormControl('', [Validators.required, Validators.pattern('^[0-9]*$'), Validators.minLength(11), Validators.maxLength(15)]),
-  //     dateOfTermin: new FormControl('', [Validators.required]),
-  //     timeOfTermin: new FormControl('', [Validators.required])
+  //   this.appointmentData = new FormGroup ({
+  //     patientId: new FormControl('', [Validators.required]),
+  //     date: new FormControl('', [Validators.required]),
+  //     time: new FormControl('', [Validators.required])
   //   }, 
   //    { updateOn: "blur" });
   // }
@@ -48,15 +45,15 @@ export class AddNewAppointmentComponent implements OnInit {
   // }
  
   // onSubmit() {
-  //   if (this.terminData.valid) {
-  //     const terminToBeSaved: Termin = {
-  //       ...this.terminData.value,
-  //       dateOfTermin: this.terminData.value.dateOfTermin.year + "-" + 
-  //         this.terminData.value.dateOfTermin.month + "-" + 
-  //         this.terminData.value.dateOfTermin.day,
-  //       timeOfTermin: this.terminData.value.timeOfTermin.hour + "-" + this.terminData.value.timeOfTermin.minute
+  //   if (this.appointmentData.valid) {
+  //     const appointmentToBeSaved: Appointment = {
+  //       ...this.appointmentData.value,
+  //       date: this.appointmentData.value.date.year + "-" + 
+  //         this.appointmentData.value.date.month + "-" + 
+  //         this.appointmentData.value.date.day,
+  //       time: this.appointmentData.value.time.hour + "-" + this.appointmentData.value.time.minute
   //     }
-  //     this.terminService.createTermin(terminToBeSaved).subscribe({
+  //     this.appointmentService.createAppointment(appointmentToBeSaved).subscribe({
   //       next: () => {
   //         this.router.navigate(['/homePage']);
   //       }
