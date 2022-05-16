@@ -14,17 +14,30 @@ export class ListOfPatientsComponent implements OnInit {
   data: Observable<Patient[]> | undefined;
   patients: Patient[] = [];
   searchTerm: string = "";
+  page!: number;
+  pageSize = 10;
+  totalPages: number = 0;
 
   constructor(private patientService: PatientService, private router: Router) { }
 
   ngOnInit(): void {
     this.patientService.getPatients()
-      .subscribe(patientsResponse => this.patients = patientsResponse.content);
+      .subscribe(patientsResponse => {
+        this.patients = patientsResponse.content;
+        this.totalPages = patientsResponse.totalPages;
+      });
   }
 
   findAllFiltered($event: any) {
     this.patientService.getPatients($event.target.value)
       .subscribe(patientsResponse => this.patients = patientsResponse.content);
+  }
+
+  findWidthPaging(selectedPage: any) {
+    if(Number.isInteger(selectedPage)) {
+      this.patientService.getPatients(this.searchTerm, this.page-1, this.pageSize)
+        .subscribe(patientsResponse => this.patients = patientsResponse.content);
+    }
   }
 
   delete(id?: number){
