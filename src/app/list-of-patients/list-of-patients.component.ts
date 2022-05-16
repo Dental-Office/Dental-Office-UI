@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { PatientService } from '../patient.service';
 import { Patient } from '../Patient';
 import { Router } from '@angular/router';
@@ -19,17 +19,17 @@ export class ListOfPatientsComponent implements OnInit {
 
   ngOnInit(): void {
     this.patientService.getPatients()
-      .subscribe(patients => this.patients = patients);
+      .subscribe(patientsResponse => this.patients = patientsResponse.content);
   }
 
   findAllFiltered($event: any) {
     this.patientService.getPatients($event.target.value)
-      .subscribe(patients => this.patients = patients);
+      .subscribe(patientsResponse => this.patients = patientsResponse.content);
   }
 
   delete(id?: number){
     this.patientService.delete(id!).subscribe(() => {
-      this.data = this.patientService.getPatients();
+      this.data = this.patientService.getPatients().pipe(map(patientsResponse => patientsResponse.content));
     });
   }
 

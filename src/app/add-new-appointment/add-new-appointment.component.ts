@@ -14,6 +14,9 @@ export class AddNewAppointmentComponent implements OnInit {
   patients: Patient[] = [];
   searchTerm: string = "";
   page!: number;
+  pageSize = 10;
+  totalPages: number = 0;
+
   // time: NgbTimeStruct = {hour: 13, minute: 30, second: 0};
 
   constructor(private patientService: PatientService) {
@@ -32,12 +35,22 @@ export class AddNewAppointmentComponent implements OnInit {
 
   ngOnInit(): void {
     this.patientService.getPatients()
-      .subscribe(patients => this.patients = patients);
+      .subscribe(patientsResponse => {
+        this.patients = patientsResponse.content;
+        this.totalPages = patientsResponse.totalPages;
+      });
   }
 
   findAllFiltered($event: any) {
     this.patientService.getPatients($event.target.value)
-      .subscribe(patients => this.patients = patients);
+      .subscribe(patientsResponse => this.patients = patientsResponse.content);
+  }
+
+  findWidthPaging(selectedPage: any) {
+    if(Number.isInteger(selectedPage)) {
+      this.patientService.getPatients(this.searchTerm, this.page-1, this.pageSize)
+        .subscribe(patientsResponse => this.patients = patientsResponse.content);
+    }
   }
 
   // onCalendarClosed() {

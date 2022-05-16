@@ -32,7 +32,7 @@
                     <div class="row justify-content-center">
                         <div class="col-10">
                             <div class="mb-3 row">
-                                <ngb-pagination class="d-flex" [collectionSize]="70"  [(page)]="page"></ngb-pagination>
+                                <ngb-pagination class="d-flex" [collectionSize]="pageSize * totalPages" [pageSize]="pageSize" [(page)]="page" (pageChange)="findWidthPaging($event)"></ngb-pagination>
                             </div>
                         </div>
                     </div>

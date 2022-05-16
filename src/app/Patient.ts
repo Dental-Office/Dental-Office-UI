@@ -5,3 +5,8 @@ export interface Patient {
     dateOfBirth: string;
     phoneNumber: string;
 }
+
+export interface PatientsResponse {
+    content: Patient[];
+    totalPages: number;
+}
