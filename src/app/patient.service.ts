@@ -17,9 +17,16 @@ export class PatientService {
     return this.http.post<Patient>(this.apiUrl, patient);
   }
 
-  getPatients(searchTerm: string = "", page: number = 0, pageSize?: number): Observable<PatientsResponse> {
-    return this.http.get<PatientsResponse>(this.apiUrl + "?searchTerm=" + searchTerm + "&pageNo=" + (Number.isInteger(page) ? page : "") + "&pageSize=" + (pageSize ? pageSize : ""));
+  getPatients(searchTerm: string = "", page: number = 0, pageSize?: number, sortKey?: string): Observable<PatientsResponse> {
+    return this.http.get<PatientsResponse>(
+      this.apiUrl + 
+      "?searchTerm=" + searchTerm +
+      "&pageNo=" + (Number.isInteger(page) ? page : "") +
+      "&pageSize=" + (pageSize ? pageSize : "") + 
+      "&sort=" +  (sortKey ? sortKey : "")
+      );
   }
+
 
   delete(id: number): Observable<object> {
     return this.http.delete(

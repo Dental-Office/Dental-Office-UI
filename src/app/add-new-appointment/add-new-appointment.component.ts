@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Patient } from '../Patient';
+import { Patient} from '../Patient';
 import { PatientService } from '../patient.service';
 
 @Component({
@@ -16,6 +16,7 @@ export class AddNewAppointmentComponent implements OnInit {
   page!: number;
   pageSize = 10;
   totalPages: number = 0;
+
 
   // time: NgbTimeStruct = {hour: 13, minute: 30, second: 0};
 
@@ -52,6 +53,18 @@ export class AddNewAppointmentComponent implements OnInit {
         .subscribe(patientsResponse => this.patients = patientsResponse.content);
     }
   }
+
+  onSort(sortKey: string) {
+    this.patientService.getPatients(this.searchTerm, this.page-1, this.pageSize, sortKey)
+      .subscribe(patientsResponse => this.patients = patientsResponse.content);
+  }
+
+  
+
+
+  
+
+  
 
   // onCalendarClosed() {
   //   this.calendarClosed = true;

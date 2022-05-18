@@ -10,3 +10,6 @@ export interface PatientsResponse {
     content: Patient[];
     totalPages: number;
 }
+
+
+

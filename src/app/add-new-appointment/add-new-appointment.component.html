@@ -12,11 +12,11 @@
                 <div style="overflow-x:auto">
                     <table>
                         <tr>
-                            <th>Id</th>
-                            <th>First name</th>
-                            <th>Last name</th>
-                            <th>Date of birth</th>
-                            <th>Phone number</th>
+                            <th name="sortKey" (click)="onSort('id')">Id</th>
+                            <th name="sortKey" (click)="onSort('firstName')">First name</th>
+                            <th name="sortKey" (click)="onSort('lastName')">Last name</th>
+                            <th name="sortKey" (click)="onSort('dateOfBirth')">Date of birth</th>
+                            <th name="sortKey" (click)="onSort('phoneNumber')">Phone number</th>
                         </tr>
                         <tr *ngFor="let d of patients" [attr.id]="d.id">
                             <td class="a">{{ d.id }}</td>

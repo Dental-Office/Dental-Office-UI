@@ -49,4 +49,9 @@ export class ListOfPatientsComponent implements OnInit {
   goToEditPage(id: number | undefined): void {
     this.router.navigate(['/editPatient'], {state: { patientId: id }});
   }
+
+  onSort(sortKey: string) {
+    this.patientService.getPatients(this.searchTerm, this.page-1, this.pageSize, sortKey)
+      .subscribe(patientsResponse => this.patients = patientsResponse.content);
+  }
 }
