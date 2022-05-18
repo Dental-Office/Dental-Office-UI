@@ -6,3 +6,9 @@ td {
   border: 1px solid blue;
   padding: 10px;
 }
+
+p{
+  color:blue;
+  font-size:xx-large;
+  font-style: italic;
+}
