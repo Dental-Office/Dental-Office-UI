@@ -5,6 +5,7 @@ import { AddNewAppointmentComponent } from './add-new-appointment/add-new-appoin
 import { EditPatientComponent } from './edit-patient/edit-patient.component';
 import { HomeComponent } from './home/home.component';
 import { ListOfPatientsComponent } from './list-of-patients/list-of-patients.component';
+import { AddNewAppointmentForPatientComponent } from './add-new-appointment-for-patient/add-new-appointment-for-patient.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -12,7 +13,8 @@ const routes: Routes = [
   { path: 'addNewPatient', component: AddNewPatientComponent },
   { path: 'listOfPatients', component: ListOfPatientsComponent },
   { path: 'editPatient', component: EditPatientComponent},
-  { path: 'addNewAppointment', component: AddNewAppointmentComponent}
+  { path: 'addNewAppointment', component: AddNewAppointmentComponent},
+  { path: 'addNewAppointmentForPatient', component: AddNewAppointmentForPatientComponent}
 ];
 
 @NgModule({

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Patient} from '../Patient';
+import { Router } from '@angular/router';
+import { Patient } from '../patient';
 import { PatientService } from '../patient.service';
 
 @Component({
@@ -9,30 +10,14 @@ import { PatientService } from '../patient.service';
 })
 export class AddNewAppointmentComponent implements OnInit {
 
-  // calendarClosed = false;
-  // appointmentData: FormGroup;
   patients: Patient[] = [];
   searchTerm: string = "";
   page!: number;
   pageSize = 10;
   totalPages: number = 0;
 
-
-  // time: NgbTimeStruct = {hour: 13, minute: 30, second: 0};
-
-  constructor(private patientService: PatientService) {
+  constructor(private patientService: PatientService, private router: Router) {
   }
-  
-  // constructor(config: NgbTimepickerConfig, private patientService: PatientService, private appointmentService: AppointmentService, private router: Router) {
-  //   config.seconds = false;
-  //   config.spinners = false;
-  //   this.appointmentData = new FormGroup ({
-  //     patientId: new FormControl('', [Validators.required]),
-  //     date: new FormControl('', [Validators.required]),
-  //     time: new FormControl('', [Validators.required])
-  //   }, 
-  //    { updateOn: "blur" });
-  // }
 
   ngOnInit(): void {
     this.patientService.getPatients()
@@ -44,7 +29,10 @@ export class AddNewAppointmentComponent implements OnInit {
 
   findAllFiltered($event: any) {
     this.patientService.getPatients($event.target.value)
-      .subscribe(patientsResponse => this.patients = patientsResponse.content);
+      .subscribe(patientsResponse => {
+        this.patients = patientsResponse.content;
+        this.totalPages = patientsResponse.totalPages;
+      }); 
   }
 
   findWidthPaging(selectedPage: any) {
@@ -57,6 +45,10 @@ export class AddNewAppointmentComponent implements OnInit {
   onSort(sortKey: string) {
     this.patientService.getPatients(this.searchTerm, this.page-1, this.pageSize, sortKey)
       .subscribe(patientsResponse => this.patients = patientsResponse.content);
+  }
+
+  goToAddNewAppointmentForPatient(id: string | undefined): void {
+    this.router.navigate(['/addNewAppointmentForPatient'], {state: { patientId: id }});
   }
 
   

@@ -5,22 +5,20 @@
                 <p>List of patients </p>
             </div>
             <div class="mb-3 row">
-                <label for="table-filtering-search" class="col-xs-3 col-sm-auto col-form-label">Full text search:</label>
+                <label for="table-filtering-search" class="col-xs-3 col-sm-auto col-form-label">Enter text or letter for search:</label>
                 <div class="col-xs-3 col-sm-auto">
-                    <input class="form-control" type="text" name="searchTerm" [(ngModel)]="searchTerm" placeholder="Search by first name" (change)="findAllFiltered($event)">
+                    <input class="form-control" type="text" name="searchTerm" [(ngModel)]="searchTerm" placeholder="Search" (change)="findAllFiltered($event)">
                 </div>
             </div>
             <div style="overflow-x:auto">
                 <table>
                     <tr>
-                        <th name="sortKey" (click)="onSort('id')">Id</th>
                         <th name="sortKey" (click)="onSort('firstName')">First name</th>
                         <th name="sortKey" (click)="onSort('lastName')">Last name</th>
                         <th name="sortKey" (click)="onSort('dateOfBirth')">Date of birth</th>
                         <th name="sortKey" (click)="onSort('phoneNumber')">Phone number</th>
                     </tr>
                     <tr *ngFor="let d of patients" [attr.id]="d.id">
-                        <td>{{ d.id }}</td>
                         <td>{{ d.firstName }}</td>
                         <td>{{ d.lastName }}</td>
                         <td>{{ d.dateOfBirth }}</td>

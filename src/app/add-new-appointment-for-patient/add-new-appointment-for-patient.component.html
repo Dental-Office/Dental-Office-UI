@@ -1,0 +1,45 @@
+<form [formGroup]="appointmentData" (ngSubmit)="onSubmit()">
+    <div class="row justify-content-md-center">
+      <div class="col-md-3 text-center">
+        <p>Add new Appointment for Patient</p>
+      </div>
+    </div>
+    <div class="row justify-content-md-center">
+      <div class="form-group col-md-3">
+        <label for="date">Date of Appointment</label>
+        <div class="input-group">
+          <input class="form-control" placeholder="yyyy-mm-dd"
+          formControlName="date"
+          readonly
+          (click)="d.toggle()" 
+          name="dp" ngbDatepicker 
+          (closed)="onCalendarClosed()"
+          [minDate]="{year: 1920, month: 1, day: 1}" #d="ngbDatepicker">
+        </div>     
+        <div *ngIf="calendarClosed && appointmentData.controls['date'].touched && appointmentData.controls['date'].errors?.['required']" class="alert alert-danger">
+          Please pick the date from calendar!
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-md-center">
+        <div class="form-group col-md-3">
+            <label for="time">Time of Appointment</label>
+            <ngb-timepicker [(ngModel)]="time" placeholder="HH-MM" formControlName="time"></ngb-timepicker>
+            <div *ngIf="appointmentData.controls['time'].touched && appointmentData.controls['time'].errors?.['required']" class="alert alert-danger">
+                Please insert the time in fields!
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+      <div class="col-md-12 text-center">
+          <button type="submit" [disabled]="!appointmentData.valid || loading" class="btn btn-primary">
+            Submit
+            <span class="spinner-border spinner-border-sm" role="status" (hidden)="loading = false" *ngIf="loading"></span>
+          </button>
+      </div>
+    </div>
+    <ngb-toast [autohide]="true" class="toast-container-error" [delay]="10000" (hidden)="isErrorToastShown = false" *ngIf="isErrorToastShown">
+      Appointment is not saved!
+    </ngb-toast>
+  </form>

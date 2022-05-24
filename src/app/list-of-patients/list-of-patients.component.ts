@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { PatientService } from '../patient.service';
-import { Patient } from '../Patient';
+import { Patient } from '../patient';
 import { Router } from '@angular/router';
 
 @Component({
@@ -30,7 +30,10 @@ export class ListOfPatientsComponent implements OnInit {
 
   findAllFiltered($event: any) {
     this.patientService.getPatients($event.target.value)
-      .subscribe(patientsResponse => this.patients = patientsResponse.content);
+      .subscribe(patientsResponse => {
+        this.patients = patientsResponse.content;
+        this.totalPages = patientsResponse.totalPages;
+      }); 
   }
 
   findWidthPaging(selectedPage: any) {
@@ -40,13 +43,13 @@ export class ListOfPatientsComponent implements OnInit {
     }
   }
 
-  delete(id?: number){
+  delete(id?: string){
     this.patientService.delete(id!).subscribe(() => {
       this.data = this.patientService.getPatients().pipe(map(patientsResponse => patientsResponse.content));
     });
   }
 
-  goToEditPage(id: number | undefined): void {
+  goToEditPage(id: string | undefined): void {
     this.router.navigate(['/editPatient'], {state: { patientId: id }});
   }
 
