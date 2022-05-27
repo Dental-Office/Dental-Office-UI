@@ -41,11 +41,11 @@ export class AddNewAppointmentForPatientComponent implements OnInit {
       const appointmentToBeSaved: Appointment = {
         ...this.appointmentData.value,
         patientId: this.patientId,
-        dateOfAppointment: this.appointmentData.value.dateOfAppointment.year + "-" + 
-          this.appointmentData.value.dateOfAppointment.month + "-" + 
-          this.appointmentData.value.dateOfAppointment.day,
-        timeOfAppointment: this.appointmentData.value.timeOfAppointment.hour + ":" + 
-          this.appointmentData.value.timeOfAppointment.minute
+        date: this.appointmentData.value.date.year + "-" + 
+          this.appointmentData.value.date.month + "-" + 
+          this.appointmentData.value.date.day,
+        time: this.appointmentData.value.time.hour + ":" + 
+          this.appointmentData.value.time.minute
       }
       this.appointmentService.createAppointment(appointmentToBeSaved).subscribe({
         next: () => {
