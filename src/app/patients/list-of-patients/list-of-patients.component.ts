@@ -14,14 +14,14 @@ export class ListOfPatientsComponent implements OnInit {
   data: Observable<Patient[]> | undefined;
   patients: Patient[] = [];
   searchTerm: string = "";
-  page!: number;
+  pageNumber!: number;
   pageSize = 10;
   totalPages: number = 0;
 
   constructor(private patientService: PatientService, private router: Router) { }
 
   ngOnInit(): void {
-    this.patientService.getPatients()
+    this.patientService.findAll()
       .subscribe(patientsResponse => {
         this.patients = patientsResponse.content;
         this.totalPages = patientsResponse.totalPages;
@@ -29,7 +29,7 @@ export class ListOfPatientsComponent implements OnInit {
   }
 
   findAllFiltered($event: any) {
-    this.patientService.getPatients($event.target.value)
+    this.patientService.findAll($event.target.value)
       .subscribe(patientsResponse => {
         this.patients = patientsResponse.content;
         this.totalPages = patientsResponse.totalPages;
@@ -38,14 +38,14 @@ export class ListOfPatientsComponent implements OnInit {
 
   findWidthPaging(selectedPage: any) {
     if(Number.isInteger(selectedPage)) {
-      this.patientService.getPatients(this.searchTerm, this.page-1, this.pageSize)
+      this.patientService.findAll(this.searchTerm, this.pageNumber-1, this.pageSize)
         .subscribe(patientsResponse => this.patients = patientsResponse.content);
     }
   }
 
   delete(id?: string){
     this.patientService.delete(id!).subscribe(() => {
-      this.data = this.patientService.getPatients().pipe(map(patientsResponse => patientsResponse.content));
+      this.data = this.patientService.findAll().pipe(map(patientsResponse => patientsResponse.content));
     });
   }
 
@@ -54,7 +54,7 @@ export class ListOfPatientsComponent implements OnInit {
   }
 
   onSort(sortKey: string) {
-    this.patientService.getPatients(this.searchTerm, this.page-1, this.pageSize, sortKey)
+    this.patientService.findAll(this.searchTerm, this.pageNumber-1, this.pageSize, sortKey)
       .subscribe(patientsResponse => this.patients = patientsResponse.content);
   }
 }

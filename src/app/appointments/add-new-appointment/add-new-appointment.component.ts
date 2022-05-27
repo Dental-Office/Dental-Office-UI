@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Patient } from '../patient';
-import { PatientService } from '../patient.service';
+import { PatientService } from 'src/app/patients/patient.service';
+import { Patient } from '../../patients/patient';
+
 
 @Component({
   selector: 'app-add-new-appointment',
@@ -12,7 +13,7 @@ export class AddNewAppointmentComponent implements OnInit {
 
   patients: Patient[] = [];
   searchTerm: string = "";
-  page!: number;
+  pageNumber!: number;
   pageSize = 10;
   totalPages: number = 0;
 
@@ -20,7 +21,7 @@ export class AddNewAppointmentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.patientService.getPatients()
+    this.patientService.findAll()
       .subscribe(patientsResponse => {
         this.patients = patientsResponse.content;
         this.totalPages = patientsResponse.totalPages;
@@ -28,7 +29,7 @@ export class AddNewAppointmentComponent implements OnInit {
   }
 
   findAllFiltered($event: any) {
-    this.patientService.getPatients($event.target.value)
+    this.patientService.findAll($event.target.value)
       .subscribe(patientsResponse => {
         this.patients = patientsResponse.content;
         this.totalPages = patientsResponse.totalPages;
@@ -37,45 +38,17 @@ export class AddNewAppointmentComponent implements OnInit {
 
   findWidthPaging(selectedPage: any) {
     if(Number.isInteger(selectedPage)) {
-      this.patientService.getPatients(this.searchTerm, this.page-1, this.pageSize)
+      this.patientService.findAll(this.searchTerm, this.pageNumber-1, this.pageSize)
         .subscribe(patientsResponse => this.patients = patientsResponse.content);
     }
   }
 
   onSort(sortKey: string) {
-    this.patientService.getPatients(this.searchTerm, this.page-1, this.pageSize, sortKey)
+    this.patientService.findAll(this.searchTerm, this.pageNumber-1, this.pageSize, sortKey)
       .subscribe(patientsResponse => this.patients = patientsResponse.content);
   }
 
   goToAddNewAppointmentForPatient(id: string | undefined): void {
     this.router.navigate(['/addNewAppointmentForPatient'], {state: { patientId: id }});
   }
-
-  
-
-
-  
-
-  
-
-  // onCalendarClosed() {
-  //   this.calendarClosed = true;
-  // }
- 
-  // onSubmit() {
-  //   if (this.appointmentData.valid) {
-  //     const appointmentToBeSaved: Appointment = {
-  //       ...this.appointmentData.value,
-  //       date: this.appointmentData.value.date.year + "-" + 
-  //         this.appointmentData.value.date.month + "-" + 
-  //         this.appointmentData.value.date.day,
-  //       time: this.appointmentData.value.time.hour + "-" + this.appointmentData.value.time.minute
-  //     }
-  //     this.appointmentService.createAppointment(appointmentToBeSaved).subscribe({
-  //       next: () => {
-  //         this.router.navigate(['/homePage']);
-  //       }
-  //     });
-  //   }
-  // }
 }

@@ -13,15 +13,15 @@ export class PatientService {
   constructor(private http:HttpClient) {
    }
 
-  createPatient(patient: Patient): Observable<Patient> {
+  create(patient: Patient): Observable<Patient> {
     return this.http.post<Patient>(this.apiUrl, patient);
   }
 
-  getPatients(searchTerm: string = "", page: number = 0, pageSize?: number, sortKey?: string): Observable<PatientsResponse> {
+  findAll(searchTerm: string = "", pageNumber: number = 0, pageSize?: number, sortKey?: string): Observable<PatientsResponse> {
     return this.http.get<PatientsResponse>(
       this.apiUrl + 
       "?searchTerm=" + searchTerm +
-      "&pageNo=" + (Number.isInteger(page) ? page : "") +
+      "&pageNo=" + (Number.isInteger(pageNumber) ? pageNumber : "") +
       "&pageSize=" + (pageSize ? pageSize : "") + 
       "&sort=" +  (sortKey ? sortKey : "")
       );
@@ -34,14 +34,12 @@ export class PatientService {
     );
   }
 
-  getPatient(id: number): Observable<Patient> {
+  get(id: number): Observable<Patient> {
     return this.http.get<Patient>(this.apiUrl + '/' + id);
   }
 
-  editPatient(id: number, patient: Patient): Observable<Patient> {
+  edit(id: number, patient: Patient): Observable<Patient> {
     return this.http.put<Patient>(this.apiUrl + '/' + id, patient);
   }
   
 }
-
-

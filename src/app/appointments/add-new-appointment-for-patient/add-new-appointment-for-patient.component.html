@@ -6,7 +6,7 @@
     </div>
     <div class="row justify-content-md-center">
       <div class="form-group col-md-3">
-        <label for="date">Date of Appointment</label>
+        <label for="date">Appointment date</label>
         <div class="input-group">
           <input class="form-control" placeholder="yyyy-mm-dd"
           formControlName="date"
@@ -23,7 +23,7 @@
     </div>
     <div class="row justify-content-md-center">
         <div class="form-group col-md-3">
-            <label for="time">Time of Appointment</label>
+            <label for="time">Appointment time</label>
             <ngb-timepicker placeholder="HH-MM" formControlName="time"></ngb-timepicker>
             <div *ngIf="appointmentData.controls['time'].touched && appointmentData.controls['time'].errors?.['required']" class="alert alert-danger">
                 Please insert the time in fields!

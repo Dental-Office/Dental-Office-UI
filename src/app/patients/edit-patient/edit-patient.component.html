@@ -38,15 +38,15 @@
   </div>
   <div class="row justify-content-md-center">
     <div class="form-group col-md-3">
-      <label for="dateOfBirth">Date of birth</label>
+      <label for="birthDate">Birth date</label>
       <input type="text" class="form-control" 
-      formControlName="dateOfBirth" readonly
+      formControlName="birthDate" readonly
       (click)="d.toggle()" 
       name="dp" ngbDatepicker 
       (closed)="onCalendarClosed()"
       [minDate]="{year: 1920, month: 1, day: 1}" #d="ngbDatepicker">
     </div>     
-    <div *ngIf="calendarClosed && patientFormGroup.controls['dateOfBirth'].touched && patientFormGroup.controls['dateOfBirth'].errors?.['required']" class="alert alert-danger">
+    <div *ngIf="calendarClosed && patientFormGroup.controls['birthDate'].touched && patientFormGroup.controls['birthDate'].errors?.['required']" class="alert alert-danger">
       Please pick the date from calendar!
     </div>
   </div>

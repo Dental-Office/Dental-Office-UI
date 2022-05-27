@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgbTimepickerConfig, NgbTimeStruct } from '@ng-bootstrap/ng-bootstrap';
-import { Appointment } from '../appointment';
+import { Appointment } from 'src/app/appointments/appointment';
 import { AppointmentService } from '../appointment.service';
 
 @Component({
@@ -47,7 +47,7 @@ export class AddNewAppointmentForPatientComponent implements OnInit {
         time: this.appointmentData.value.time.hour + ":" + 
           this.appointmentData.value.time.minute
       }
-      this.appointmentService.createAppointment(appointmentToBeSaved).subscribe({
+      this.appointmentService.create(appointmentToBeSaved).subscribe({
         next: () => {
           this.router.navigate(['/homePage']);
         },

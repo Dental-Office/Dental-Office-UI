@@ -15,13 +15,13 @@
                     <tr>
                         <th name="sortKey" (click)="onSort('firstName')">First name</th>
                         <th name="sortKey" (click)="onSort('lastName')">Last name</th>
-                        <th name="sortKey" (click)="onSort('dateOfBirth')">Date of birth</th>
+                        <th name="sortKey" (click)="onSort('birthDate')">Birth date</th>
                         <th name="sortKey" (click)="onSort('phoneNumber')">Phone number</th>
                     </tr>
                     <tr *ngFor="let d of patients" [attr.id]="d.id">
                         <td>{{ d.firstName }}</td>
                         <td>{{ d.lastName }}</td>
-                        <td>{{ d.dateOfBirth }}</td>
+                        <td>{{ d.birthDate }}</td>
                         <td>{{ d.phoneNumber }}</td>
                         <td><button id="remove" class="btn btn-danger" (click)="delete(d.id)">Delete</button></td>
                         <td><button id="edit" class="btn btn-success" (click)="goToEditPage(d.id)">Edit</button></td>
@@ -32,7 +32,7 @@
                 <div class="row justify-content-center">
                     <div class="col-10">
                         <div class="mb-3 row">
-                            <ngb-pagination class="d-flex" [collectionSize]="pageSize * totalPages" [pageSize]="pageSize" [(page)]="page" (pageChange)="findWidthPaging($event)"></ngb-pagination>
+                            <ngb-pagination class="d-flex" [collectionSize]="pageSize * totalPages" [pageSize]="pageSize" [(page)]="pageNumber" (pageChange)="findWidthPaging($event)"></ngb-pagination>
                         </div>
                     </div>
                 </div>

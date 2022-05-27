@@ -13,7 +13,7 @@ export class AppointmentService {
   constructor(private http:HttpClient) {
   }
 
-  createAppointment(appointment: Appointment): Observable<Appointment> {
+  create(appointment: Appointment): Observable<Appointment> {
     return this.http.post<Appointment>(this.apiUrl, appointment);
   }
  

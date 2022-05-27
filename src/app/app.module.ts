@@ -6,13 +6,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { AddNewPatientComponent } from './add-new-patient/add-new-patient.component';
 import { AppRoutingModule } from './app-routing.module';
-import { ListOfPatientsComponent } from './list-of-patients/list-of-patients.component';
-import { EditPatientComponent } from './edit-patient/edit-patient.component';
+import { EditPatientComponent } from './patients/edit-patient/edit-patient.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { AddNewAppointmentComponent } from './add-new-appointment/add-new-appointment.component';
-import { AddNewAppointmentForPatientComponent } from './add-new-appointment-for-patient/add-new-appointment-for-patient.component';
+import { AddNewAppointmentComponent } from './appointments/add-new-appointment/add-new-appointment.component';
+import { AddNewPatientComponent } from './patients/add-new-patient/add-new-patient.component';
+import { ListOfPatientsComponent } from './patients/list-of-patients/list-of-patients.component';
+import { AddNewAppointmentForPatientComponent } from './appointments/add-new-appointment-for-patient/add-new-appointment-for-patient.component';
 
 @NgModule({
   declarations: [

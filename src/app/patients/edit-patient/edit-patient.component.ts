@@ -25,7 +25,7 @@ export class EditPatientComponent implements OnInit {
     this.patientFormGroup = new FormGroup({
       firstName: new FormControl('', [Validators.required, Validators.minLength(2), Validators.pattern('[a-zA-Z]*')]),
       lastName: new FormControl('', [Validators.required, Validators.minLength(2), Validators.pattern('[a-zA-Z]*')]),
-      dateOfBirth: new FormControl('', [Validators.required]),
+      birthDate: new FormControl('', [Validators.required]),
       phoneNumber: new FormControl('', [Validators.required, Validators.pattern('^[0-9]*$'), Validators.minLength(11), Validators.maxLength(15)]),
     },
     { updateOn: "blur" });
@@ -36,16 +36,16 @@ export class EditPatientComponent implements OnInit {
   }
 
   getPatient(id: number){
-    this.patientService.getPatient(id).subscribe((patient) => {
+    this.patientService.get(id).subscribe((patient) => {
       this.patientFormGroup.get("firstName")?.setValue(patient.firstName);
       this.patientFormGroup.get("lastName")?.setValue(patient.lastName);
-      const dateElements = patient.dateOfBirth.split("-");
-      const dateOfBirthObject = {
+      const dateElements = patient.birthDate.split("-");
+      const birthDateObject = {
         year: Number(dateElements[0]),
         month: Number(dateElements[1]),
         day: Number(dateElements[2])
       }
-      this.patientFormGroup.get("dateOfBirth")?.setValue(dateOfBirthObject);
+      this.patientFormGroup.get("birthDaate")?.setValue(birthDateObject);
       this.patientFormGroup.get("phoneNumber")?.setValue(patient.phoneNumber);
     });
   }
@@ -55,11 +55,11 @@ export class EditPatientComponent implements OnInit {
     if (this.patientFormGroup.valid) {
       const patient: Patient = {
         ...this.patientFormGroup.value,
-        dateOfBirth: this.patientFormGroup.value.dateOfBirth.year + "-" + 
-          this.patientFormGroup.value.dateOfBirth.month + "-" + 
-          this.patientFormGroup.value.dateOfBirth.day
+        birthDate: this.patientFormGroup.value.birthDate.year + "-" + 
+          this.patientFormGroup.value.birthDate.month + "-" + 
+          this.patientFormGroup.value.birthDate.day
       }
-      this.patientService.editPatient(this.id, patient).subscribe({
+      this.patientService.edit(this.id, patient).subscribe({
         next: () => {
           this.router.navigate(['/listOfPatients']);
         },
