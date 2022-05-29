@@ -4,3 +4,8 @@ export interface Appointment {
     date: string;
     time: string;
 }
+
+export interface AppointmentResponse {
+    content: Appointment[];
+    totalPages: number;
+}

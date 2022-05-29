@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { PatientService } from 'src/app/patients/patient.service';
 import { Patient } from '../../patients/patient';
 
-
 @Component({
   selector: 'app-add-new-appointment',
   templateUrl: './add-new-appointment.component.html',

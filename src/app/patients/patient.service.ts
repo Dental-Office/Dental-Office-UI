@@ -27,7 +27,6 @@ export class PatientService {
       );
   }
 
-
   delete(id: string): Observable<object> {
     return this.http.delete(
       this.apiUrl + '/' + id
@@ -40,6 +39,5 @@ export class PatientService {
 
   edit(id: number, patient: Patient): Observable<Patient> {
     return this.http.put<Patient>(this.apiUrl + '/' + id, patient);
-  }
-  
+  }  
 }

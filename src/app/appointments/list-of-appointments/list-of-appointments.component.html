@@ -1,37 +1,32 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-8">
-            <div class="col-md-3 text-center">
-                <p>List of Patients </p>
+            <div class="col-md-4 text-center">
+                <p>List of Appointments</p>
             </div>
             <div class="mb-3 row">
-                <label for="table-filtering-search" class="col-xs-3 col-sm-auto col-form-label">Enter text or letter for search:</label>
+                <label for="table-filtering-search" class="col-xs-3 col-sm-auto col-form-label">Enter date for search:</label>
                 <div class="col-xs-3 col-sm-auto">
                     <input class="form-control" type="text" name="searchTerm" [(ngModel)]="searchTerm" placeholder="Search" (change)="findAllFiltered($event)">
                 </div>
             </div>
-            <div *ngIf="patients.length === 0">
+            <div *ngIf="appointments.length === 0">
                 <span>No results found</span>
             </div>
-            <div style="overflow-x:auto" *ngIf="patients.length > 0">
+            <div style="overflow-x:auto" *ngIf="appointments.length > 0">
                 <table>
                     <tr>
-                        <th name="sortKey" (click)="onSort('firstName')">First name</th>
-                        <th name="sortKey" (click)="onSort('lastName')">Last name</th>
-                        <th name="sortKey" (click)="onSort('birthDate')">Birth date</th>
-                        <th name="sortKey" (click)="onSort('phoneNumber')">Phone number</th>
+                        <th name="sortKey" (click)="onSort('date')">Date</th>
+                        <th name="sortKey" (click)="onSort('time')">Time</th>
                     </tr>
-                    <tr *ngFor="let d of patients" [attr.id]="d.id">
-                        <td>{{ d.firstName }}</td>
-                        <td>{{ d.lastName }}</td>
-                        <td>{{ d.birthDate }}</td>
-                        <td>{{ d.phoneNumber }}</td>
+                    <tr *ngFor="let d of appointments" [attr.id]="d.id">
+                        <td>{{ d.date }}</td>
+                        <td>{{ d.time }}</td>
                         <td><button id="remove" class="btn btn-danger" (click)="onDelete(d.id)">Delete</button></td>
-                        <td><button id="edit" class="btn btn-success" (click)="goToEditPage(d.id)">Edit</button></td>
                     </tr>
                 </table>
             </div>
-            <div class="container" *ngIf="patients.length > 0">
+            <div class="container" *ngIf="appointments.length > 0">
                 <div class="row justify-content-center">
                     <div class="col-10">
                         <div class="mb-3 row">
@@ -43,3 +38,4 @@
         </div>
     </div>
 </div>
+

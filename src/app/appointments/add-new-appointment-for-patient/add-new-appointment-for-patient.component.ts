@@ -23,6 +23,7 @@ export class AddNewAppointmentForPatientComponent implements OnInit {
     config.seconds = false;
     config.spinners = false;
     this.patientId = this.router.getCurrentNavigation()?.extras.state?.['patientId'];
+
     if(!this.patientId) {
       this.router.navigate(['/addNewAppointment']);
     }
@@ -33,9 +34,9 @@ export class AddNewAppointmentForPatientComponent implements OnInit {
     { updateOn: "blur" });
    }
 
-   ngOnInit(): void {}
+  ngOnInit(): void {}
 
-   onSubmit() {
+  onSubmit() {
     this.loading = true;
     if (this.appointmentData.valid) {
       const appointmentToBeSaved: Appointment = {
@@ -49,7 +50,7 @@ export class AddNewAppointmentForPatientComponent implements OnInit {
       }
       this.appointmentService.create(appointmentToBeSaved).subscribe({
         next: () => {
-          this.router.navigate(['/homePage']);
+          this.router.navigate(['/addNewAppointment']);
         },
         error: () => {
             this.isErrorToastShown = true;
@@ -59,8 +60,7 @@ export class AddNewAppointmentForPatientComponent implements OnInit {
     }
   }
 
-   onCalendarClosed() {
+  onCalendarClosed() {
     this.calendarClosed = true;
   }
-
 }

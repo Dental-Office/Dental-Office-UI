@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { map, Observable } from 'rxjs';
 import { PatientService } from '../patient.service';
 import { Patient } from '../patient';
 import { Router } from '@angular/router';
@@ -11,7 +10,6 @@ import { Router } from '@angular/router';
 })
 export class ListOfPatientsComponent implements OnInit {
 
-  data: Observable<Patient[]> | undefined;
   patients: Patient[] = [];
   searchTerm: string = "";
   pageNumber!: number;
@@ -43,9 +41,10 @@ export class ListOfPatientsComponent implements OnInit {
     }
   }
 
-  delete(id?: string){
+  onDelete(id?: string){
     this.patientService.delete(id!).subscribe(() => {
-      this.data = this.patientService.findAll().pipe(map(patientsResponse => patientsResponse.content));
+      this.patientService.findAll()
+        .subscribe(patients => this.patients = patients.content)
     });
   }
 
