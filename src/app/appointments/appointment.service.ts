@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Appointment, AppointmentResponse } from './appointment';
+import { Appointment, AppointmentRequest, AppointmentResponse } from './appointment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class AppointmentService {
   constructor(private http:HttpClient) {
   }
 
-  create(appointment: Appointment): Observable<Appointment> {
+  create(appointment: AppointmentRequest): Observable<Appointment> {
     return this.http.post<Appointment>(this.apiUrl, appointment);
   }
 

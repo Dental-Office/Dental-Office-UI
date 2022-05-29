@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgbTimepickerConfig, NgbTimeStruct } from '@ng-bootstrap/ng-bootstrap';
-import { Appointment } from 'src/app/appointments/appointment';
+import { Appointment, AppointmentRequest } from 'src/app/appointments/appointment';
 import { AppointmentService } from '../appointment.service';
 
 @Component({
@@ -39,8 +39,7 @@ export class AddNewAppointmentForPatientComponent implements OnInit {
   onSubmit() {
     this.loading = true;
     if (this.appointmentData.valid) {
-      const appointmentToBeSaved: Appointment = {
-        ...this.appointmentData.value,
+      const appointmentToBeSaved: AppointmentRequest = {
         patientId: this.patientId,
         date: this.appointmentData.value.date.year + "-" + 
           this.appointmentData.value.date.month + "-" + 

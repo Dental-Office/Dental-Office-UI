@@ -16,10 +16,14 @@
             <div style="overflow-x:auto" *ngIf="appointments.length > 0">
                 <table>
                     <tr>
+                        <th>First name</th>
+                        <th>Last name</th>
                         <th name="sortKey" (click)="onSort('date')">Date</th>
                         <th name="sortKey" (click)="onSort('time')">Time</th>
                     </tr>
                     <tr *ngFor="let d of appointments" [attr.id]="d.id">
+                        <td>{{ d.patient.firstName }}</td>
+                        <td>{{ d.patient.lastName }}</td>
                         <td>{{ d.date }}</td>
                         <td>{{ d.time }}</td>
                         <td><button id="remove" class="btn btn-danger" (click)="onDelete(d.id)">Delete</button></td>
