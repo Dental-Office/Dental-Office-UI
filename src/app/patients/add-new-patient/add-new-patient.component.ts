@@ -41,7 +41,7 @@ export class AddNewPatientComponent implements OnInit {
       }
       this.patientService.create(patientToBeSaved).subscribe({
         next: () => {
-          this.router.navigate(['/homePage']);
+          this.router.navigate(['/listOfPatients']);
         },
         error: () => {
             this.isErrorToastShown = true;

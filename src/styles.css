@@ -1,16 +1,2 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap-icons/font/bootstrap-icons.css";
-
-/* html, div { background-color: rgb(223, 230, 235); } */
-
-.toast-container-error 
-    .toast-body {
-        background-color: red;
-        left: 80%;
-        position: fixed;
-        transform: translate(-50%, -300px);
-        z-index: 1200;
-    }
-
-
-

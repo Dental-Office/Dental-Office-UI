@@ -12,3 +12,11 @@ p{
   font-size:xx-large;
   font-style: italic;
 }
+
+.toast-container-error {
+  background-color: red;
+  left: 80%;
+  position: fixed;
+  transform: translate(-30%, -800px);
+  z-index: 1200;
+}

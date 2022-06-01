@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PatientService } from '../patient.service';
 import { Patient } from '../patient';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-list-of-patients',
@@ -15,6 +16,7 @@ export class ListOfPatientsComponent implements OnInit {
   pageNumber!: number;
   pageSize = 10;
   totalPages: number = 0;
+  isErrorToastShown = false;
 
   constructor(private patientService: PatientService, private router: Router) { }
 
@@ -42,10 +44,17 @@ export class ListOfPatientsComponent implements OnInit {
   }
 
   onDelete(id?: string){
-    this.patientService.delete(id!).subscribe(() => {
-      this.patientService.findAll()
-        .subscribe(patients => this.patients = patients.content)
-    });
+    this.patientService.delete(id!).subscribe({
+      next: () => {
+        this.patientService.findAll()
+          .subscribe(patients => this.patients = patients.content)
+      },
+      error: (exception: HttpErrorResponse) => {
+         if (exception.status === 409) {
+          this.isErrorToastShown = true;
+         }
+      }
+  });
   }
 
   goToEditPage(id: string | undefined): void {

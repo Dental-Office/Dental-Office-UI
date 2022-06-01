@@ -49,7 +49,7 @@ export class AddNewAppointmentForPatientComponent implements OnInit {
       }
       this.appointmentService.create(appointmentToBeSaved).subscribe({
         next: () => {
-          this.router.navigate(['/addNewAppointment']);
+          this.router.navigate(['/listOfAppointments']);
         },
         error: () => {
             this.isErrorToastShown = true;
