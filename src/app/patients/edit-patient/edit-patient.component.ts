@@ -45,7 +45,7 @@ export class EditPatientComponent implements OnInit {
         month: Number(dateElements[1]),
         day: Number(dateElements[2])
       }
-      this.patientFormGroup.get("birthDaate")?.setValue(birthDateObject);
+      this.patientFormGroup.get("birthDate")?.setValue(birthDateObject);
       this.patientFormGroup.get("phoneNumber")?.setValue(patient.phoneNumber);
     });
   }

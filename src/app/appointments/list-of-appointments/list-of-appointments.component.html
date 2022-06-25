@@ -27,6 +27,7 @@
                         <td>{{ d.date }}</td>
                         <td>{{ d.time }}</td>
                         <td><button id="remove" class="btn btn-danger" (click)="onDelete(d.id)">Delete</button></td>
+                        <td><button id="edit" class="btn btn-success" (click)="goToEditPage(d.id)">Edit</button></td>
                     </tr>
                 </table>
             </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Appointment } from '../appointment';
 import { AppointmentService } from '../appointment.service';
 
@@ -15,7 +16,7 @@ export class ListOfAppointmentsComponent implements OnInit {
   pageSize = 10;
   totalPages: number = 0;
 
-  constructor(private appointmentService: AppointmentService) { }
+  constructor(private appointmentService: AppointmentService, private router: Router) { }
   
   ngOnInit(): void {
     this.appointmentService.findAll()
@@ -47,6 +48,10 @@ export class ListOfAppointmentsComponent implements OnInit {
           this.appointments = appointments.content
         });
     });
+  }
+
+  goToEditPage(id: string | undefined): void {
+    this.router.navigate(['/editAppointment'], {state: { appointmentId: id }});
   }
 
   onSort(sortKey: string) {

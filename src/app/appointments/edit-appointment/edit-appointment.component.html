@@ -1,0 +1,71 @@
+<ng-container [formGroup]="appointmentFormGroup">
+    <div class="row justify-content-md-center">
+      <div class="col-md-3 text-center">
+        <p>Edit a Appointment</p>
+      </div>
+    </div>
+    <div class="row justify-content-md-center">
+      <div class="form-group col-md-3">
+        <label for="firstName">First name</label>
+        <input type="text" class="form-control" 
+        formControlName="firstName">   
+        <div *ngIf="appointmentFormGroup.controls['firstName'].touched && appointmentFormGroup.controls['firstName'].errors?.['required']" class="alert alert-danger">
+          First name is required!
+        </div>
+        <div *ngIf="appointmentFormGroup.controls['firstName'].touched && appointmentFormGroup.controls['firstName'].errors?.['minlength']" class="alert alert-danger">
+          First name must have more than one character!
+        </div>
+        <div *ngIf="appointmentFormGroup.controls['firstName'].touched && appointmentFormGroup.controls['firstName'].errors?.['pattern']" class="alert alert-danger">
+          First name can't be a number!
+        </div> 
+      </div>
+    </div>
+    <div class="row justify-content-md-center">
+      <div class="form-group col-md-3">
+        <label for="lastName">Last name</label>
+        <input type="text" class="form-control"
+        formControlName="lastName">
+        <div *ngIf="appointmentFormGroup.controls['lastName'].touched && appointmentFormGroup.controls['lastName'].errors?.['required']" class="alert alert-danger">
+          Last name is required!
+        </div>
+        <div *ngIf="appointmentFormGroup.controls['lastName'].touched && appointmentFormGroup.controls['lastName'].errors?.['minlength']" class="alert alert-danger">
+          Last name must have more than one character!
+        </div>
+        <div *ngIf="appointmentFormGroup.controls['lastName'].touched && appointmentFormGroup.controls['lastName'].errors?.['pattern']" class="alert alert-danger">
+          Last name can't be a number!
+        </div>
+      </div> 
+    </div>
+    <div class="row justify-content-md-center">
+      <div class="form-group col-md-3">
+        <label for="date">Appointment date</label>
+        <input type="text" class="form-control" 
+        formControlName="date" readonly
+        (click)="d.toggle()" 
+        name="dp" ngbDatepicker 
+        (closed)="onCalendarClosed()"
+        [minDate]="{year: 1920, month: 1, day: 1}" #d="ngbDatepicker">
+      </div>     
+      <div *ngIf="calendarClosed && appointmentFormGroup.controls['date'].touched && appointmentFormGroup.controls['date'].errors?.['required']" class="alert alert-danger">
+        Please pick the date from calendar!
+      </div>
+    </div>
+    <div class="row justify-content-md-center">
+      <div class="form-group col-md-3">
+          <label for="time">Appointment time</label>
+          <ngb-timepicker placeholder="HH-MM" formControlName="time"></ngb-timepicker>
+          <div *ngIf="appointmentFormGroup.controls['time'].touched && appointmentFormGroup.controls['time'].errors?.['required']" class="alert alert-danger">
+              Please insert the time in fields!
+          </div>
+      </div>
+    </div>
+    <div class="col-md-12 text-center">
+      <button class="btn btn-primary" [disabled]="!appointmentFormGroup.valid || loading" (click)="editAppointment()">
+        Save changes
+        <span class="spinner-border spinner-border-sm" role="status" (hidden)="loading = false" *ngIf="loading"></span>
+      </button>
+    </div>
+    <ngb-toast [autohide]="true" class="toast-container-error" [delay]="10000" (hidden)="isErrorToastShown = false" *ngIf="isErrorToastShown">
+      Patient is not edited!
+    </ngb-toast>
+</ng-container>
