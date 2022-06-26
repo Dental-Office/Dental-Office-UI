@@ -1,0 +1,54 @@
+<form [formGroup]="materials" (ngSubmit)="onSubmit()">
+    <div class="row justify-content-md-center">
+      <div class="col-md-3 text-center">
+        <p>Add new Material</p>
+      </div>
+    </div>
+    <div class="row justify-content-md-center">
+      <div class="form-group col-md-3">
+        <label for="materialName">Material name</label>
+        <input type="text" class="form-control" id="materialName" 
+          placeholder="Enter material name" formControlName="materialName">
+        <div *ngIf="materials.controls['materialName'].touched && materials.controls['materialName'].errors?.['required']" class="alert alert-danger">
+          Material name is required!
+        </div>
+        <div *ngIf="materials.controls['materialName'].touched && materials.controls['materialName'].errors?.['minlength']" class="alert alert-danger">
+          Material name must have more than one character!
+        </div>
+        <div *ngIf="materials.controls['materialName'].touched && materials.controls['materialName'].errors?.['pattern']" class="alert alert-danger">
+          Material name can't be a number!
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-md-center">
+      <div class="form-group col-md-3">
+        <label for="quantity">Quantity</label>
+        <input type="text" class="form-control" id="quantity" 
+          placeholder="Enter quantity" formControlName="quantity">
+          <div *ngIf="materials.controls['quantity'].touched && materials.controls['quantity'].errors?.['required']" class="alert alert-danger">
+            Quantity is required!
+          </div>
+          <!-- <div *ngIf="materials.controls['quantity'].touched && materials.controls['quantity'].errors?.['pattern']" class="alert alert-danger">
+            Please enter a number!
+          </div>
+          <div *ngIf="materials.controls['quantity'].touched && materials.controls['quantity'].errors?.['minlength']" class="alert alert-danger">
+            Quantity must have at least 1 number!
+          </div>
+          <div *ngIf="materials.controls['quantity'].touched && materials.controls['quantity'].errors?.['maxlength']" class="alert alert-danger">
+            Quantity must not have more than 5 numbers!
+          </div>  -->
+      </div>
+    </div>
+    <div class="container">
+      <div class="col-md-12 text-center">
+          <button type="submit" [disabled]="!materials.valid || loading" class="btn btn-primary">
+            Submit
+            <span class="spinner-border spinner-border-sm" role="status" (hidden)="loading = false" *ngIf="loading"></span>
+          </button>
+      </div>
+    </div>
+    <ngb-toast [autohide]="true" class="toast-container-error" [delay]="10000" (hidden)="isErrorToastShown = false" *ngIf="isErrorToastShown">
+      Material is not saved!
+    </ngb-toast>
+</form>
+  
