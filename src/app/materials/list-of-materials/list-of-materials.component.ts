@@ -58,7 +58,7 @@ export class ListOfMaterialsComponent implements OnInit {
   }
 
   goToEditPage(id: string | undefined): void {
-    this.router.navigate(['/editMaterial'], {state: { patientId: id }});
+    this.router.navigate(['/editMaterial'], {state: { materialId: id }});
   }
 
   onSort(sortKey: string) {

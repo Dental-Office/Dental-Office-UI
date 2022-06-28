@@ -17,6 +17,7 @@ import { ListOfAppointmentsComponent } from './appointments/list-of-appointments
 import { EditAppointmentComponent } from './appointments/edit-appointment/edit-appointment.component';
 import { AddNewMaterialComponent } from './materials/add-new-material/add-new-material.component';
 import { ListOfMaterialsComponent } from './materials/list-of-materials/list-of-materials.component';
+import { EditMaterialComponent } from './materials/edit-material/edit-material.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ListOfMaterialsComponent } from './materials/list-of-materials/list-of-
     ListOfAppointmentsComponent,
     EditAppointmentComponent,
     AddNewMaterialComponent,
-    ListOfMaterialsComponent
+    ListOfMaterialsComponent,
+    EditMaterialComponent
   ],
   imports: [
     BrowserModule,

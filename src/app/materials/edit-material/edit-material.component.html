@@ -1,0 +1,51 @@
+<ng-container [formGroup]="materialFormGroup">
+    <div class="row justify-content-md-center">
+      <div class="col-md-3 text-center">
+        <p>Edit a Material</p>
+      </div>
+    </div>
+    <div class="row justify-content-md-center">
+      <div class="form-group col-md-3">
+        <label for="materialName">Material name</label>
+        <input type="text" class="form-control" 
+        formControlName="materialName">   
+        <div *ngIf="materialFormGroup.controls['materialName'].touched && materialFormGroup.controls['materialName'].errors?.['required']" class="alert alert-danger">
+          Material name is required!
+        </div>
+        <div *ngIf="materialFormGroup.controls['materialName'].touched && materialFormGroup.controls['materialName'].errors?.['minlength']" class="alert alert-danger">
+          Material name must have more than one character!
+        </div>
+        <div *ngIf="materialFormGroup.controls['materialName'].touched && materialFormGroup.controls['materialName'].errors?.['pattern']" class="alert alert-danger">
+          Material name can't be a number!
+        </div> 
+      </div>
+    </div>
+    <div class="row justify-content-md-center">
+      <div class="form-group col-md-3">
+        <label for="quantity">Quantity</label>
+        <input type="text" class="form-control"
+        formControlName="quantity">
+        <div *ngIf="materialFormGroup.controls['quantity'].touched && materialFormGroup.controls['quantity'].errors?.['required']" class="alert alert-danger">
+          Quantity is required!
+        </div>
+        <div *ngIf="materialFormGroup.controls['quantity'].touched && materialFormGroup.controls['quantity'].errors?.['pattern']" class="alert alert-danger">
+            Please enter a number!
+          </div>
+          <div *ngIf="materialFormGroup.controls['quantity'].touched && materialFormGroup.controls['quantity'].errors?.['minlength']" class="alert alert-danger">
+            Quantity must have at least 1 number!
+          </div>
+          <div *ngIf="materialFormGroup.controls['quantity'].touched && materialFormGroup.controls['quantity'].errors?.['maxlength']" class="alert alert-danger">
+            Quantity must not have more than 5 numbers!
+          </div> 
+      </div>
+    </div>
+    <div class="col-md-12 text-center">
+      <button class="btn btn-primary" [disabled]="!materialFormGroup.valid || loading" (click)="editMaterial()">
+        Save changes
+        <span class="spinner-border spinner-border-sm" role="status" (hidden)="loading = false" *ngIf="loading"></span>
+      </button>
+    </div>
+    <ngb-toast [autohide]="true" class="toast-container-error" [delay]="10000" (hidden)="isErrorToastShown = false" *ngIf="isErrorToastShown">
+      Material is not edited!
+    </ngb-toast>
+  </ng-container>

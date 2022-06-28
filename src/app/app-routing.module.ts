@@ -10,6 +10,7 @@ import { ListOfAppointmentsComponent } from './appointments/list-of-appointments
 import { EditAppointmentComponent } from './appointments/edit-appointment/edit-appointment.component';
 import { AddNewMaterialComponent } from './materials/add-new-material/add-new-material.component';
 import { ListOfMaterialsComponent } from './materials/list-of-materials/list-of-materials.component';
+import { EditMaterialComponent } from './materials/edit-material/edit-material.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -22,7 +23,8 @@ const routes: Routes = [
   { path: 'listOfAppointments', component: ListOfAppointmentsComponent},
   { path: 'editAppointment', component: EditAppointmentComponent},
   { path: 'addNewMaterial', component: AddNewMaterialComponent},
-  { path: 'listOfMaterials', component: ListOfMaterialsComponent}
+  { path: 'listOfMaterials', component: ListOfMaterialsComponent},
+  { path: 'editMaterial', component: EditMaterialComponent}
 ];
 
 @NgModule({
