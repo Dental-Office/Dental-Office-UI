@@ -14,7 +14,6 @@ export class MaterialService {
      }
   
     create(material: Material): Observable<Material> {
-      console.log("Service: " + material);
       return this.http.post<Material>(this.apiUrl, material);
     }
   

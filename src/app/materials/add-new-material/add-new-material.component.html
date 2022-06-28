@@ -28,7 +28,7 @@
           <div *ngIf="materials.controls['quantity'].touched && materials.controls['quantity'].errors?.['required']" class="alert alert-danger">
             Quantity is required!
           </div>
-          <!-- <div *ngIf="materials.controls['quantity'].touched && materials.controls['quantity'].errors?.['pattern']" class="alert alert-danger">
+          <div *ngIf="materials.controls['quantity'].touched && materials.controls['quantity'].errors?.['pattern']" class="alert alert-danger">
             Please enter a number!
           </div>
           <div *ngIf="materials.controls['quantity'].touched && materials.controls['quantity'].errors?.['minlength']" class="alert alert-danger">
@@ -36,7 +36,7 @@
           </div>
           <div *ngIf="materials.controls['quantity'].touched && materials.controls['quantity'].errors?.['maxlength']" class="alert alert-danger">
             Quantity must not have more than 5 numbers!
-          </div>  -->
+          </div> 
       </div>
     </div>
     <div class="container">

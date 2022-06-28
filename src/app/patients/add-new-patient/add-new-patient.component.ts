@@ -39,7 +39,6 @@ export class AddNewPatientComponent implements OnInit {
           this.basicData.value.birthDate.month + "-" + 
           this.basicData.value.birthDate.day
       }
-      // console.log(patientToBeSaved);
       this.patientService.create(patientToBeSaved).subscribe({
         next: () => {
           this.router.navigate(['/listOfPatients']);

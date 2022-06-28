@@ -1,0 +1,22 @@
+table,
+th,
+td {
+  font-family: Arial, sans-serif;
+  text-align: left;
+  border: 1px solid blue;
+  padding: 10px;
+}
+
+p{
+  color:blue;
+  font-size:xx-large;
+  font-style: italic;
+}
+
+.toast-container-error {
+  background-color: red;
+  left: 80%;
+  position: fixed;
+  transform: translate(-30%, -800px);
+  z-index: 1200;
+}

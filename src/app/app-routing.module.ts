@@ -9,6 +9,7 @@ import { AddNewAppointmentForPatientComponent } from './appointments/add-new-app
 import { ListOfAppointmentsComponent } from './appointments/list-of-appointments/list-of-appointments.component';
 import { EditAppointmentComponent } from './appointments/edit-appointment/edit-appointment.component';
 import { AddNewMaterialComponent } from './materials/add-new-material/add-new-material.component';
+import { ListOfMaterialsComponent } from './materials/list-of-materials/list-of-materials.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -20,7 +21,8 @@ const routes: Routes = [
   { path: 'addNewAppointmentForPatient', component: AddNewAppointmentForPatientComponent},
   { path: 'listOfAppointments', component: ListOfAppointmentsComponent},
   { path: 'editAppointment', component: EditAppointmentComponent},
-  { path: 'addNewMaterial', component: AddNewMaterialComponent}
+  { path: 'addNewMaterial', component: AddNewMaterialComponent},
+  { path: 'listOfMaterials', component: ListOfMaterialsComponent}
 ];
 
 @NgModule({
