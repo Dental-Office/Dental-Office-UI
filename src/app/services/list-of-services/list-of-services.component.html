@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="row justify-content-center">
+                <p>List of Services </p>
+            </div>
+            <div class="mb-3 row">
+                <label for="table-filtering-search" class="col-xs-3 col-sm-auto col-form-label">Enter text for search:</label>
+                <div class="col-xs-3 col-sm-auto">
+                    <input class="form-control" type="text" name="searchTerm" [(ngModel)]="searchTerm" placeholder="Search" (change)="findAllFiltered($event)">
+                </div>
+            </div>
+        </div>
+        <div *ngIf="services.length === 0">
+            <span>No results found</span>
+        </div>
+        <div class="row justify-content-md-center">
+            <div class="form-group col-md-2">
+                <div style="overflow-x:auto" *ngIf="services.length > 0">
+                    <table>
+                        <tr>
+                            <th name="sortKey" (click)="onSort('serviceName')">Service name</th>
+                        </tr>
+                        <tr *ngFor="let d of services" [attr.id]="d.id">
+                            <td>{{ d.serviceName }}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-md-center">
+            <div class="form-group col-md-3">
+                <div class="container" *ngIf="services.length > 0">
+                    <div class="row justify-content-center">
+                        <div class="col-8">
+                            <div class="mb-3 row">
+                                <ngb-pagination class="d-flex" [collectionSize]="pageSize * totalPages" [pageSize]="pageSize" [(page)]="pageNumber" (pageChange)="findWidthPaging($event)"></ngb-pagination>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

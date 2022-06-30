@@ -18,6 +18,8 @@ import { EditAppointmentComponent } from './appointments/edit-appointment/edit-a
 import { AddNewMaterialComponent } from './materials/add-new-material/add-new-material.component';
 import { ListOfMaterialsComponent } from './materials/list-of-materials/list-of-materials.component';
 import { EditMaterialComponent } from './materials/edit-material/edit-material.component';
+import { AddNewServiceComponent } from './services/add-new-service/add-new-service.component';
+import { ListOfServicesComponent } from './services/list-of-services/list-of-services.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { EditMaterialComponent } from './materials/edit-material/edit-material.c
     EditAppointmentComponent,
     AddNewMaterialComponent,
     ListOfMaterialsComponent,
-    EditMaterialComponent
+    EditMaterialComponent,
+    AddNewServiceComponent,
+    ListOfServicesComponent
   ],
   imports: [
     BrowserModule,

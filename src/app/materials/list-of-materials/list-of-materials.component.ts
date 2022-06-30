@@ -65,5 +65,4 @@ export class ListOfMaterialsComponent implements OnInit {
     this.materialService.findAll(this.searchTerm, this.pageNumber-1, this.pageSize, sortKey)
       .subscribe(materialResponse => this.materials = materialResponse.content);
   }
-
 }

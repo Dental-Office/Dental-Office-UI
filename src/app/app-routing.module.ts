@@ -11,6 +11,8 @@ import { EditAppointmentComponent } from './appointments/edit-appointment/edit-a
 import { AddNewMaterialComponent } from './materials/add-new-material/add-new-material.component';
 import { ListOfMaterialsComponent } from './materials/list-of-materials/list-of-materials.component';
 import { EditMaterialComponent } from './materials/edit-material/edit-material.component';
+import { AddNewServiceComponent } from './services/add-new-service/add-new-service.component';
+import { ListOfServicesComponent } from './services/list-of-services/list-of-services.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -24,7 +26,9 @@ const routes: Routes = [
   { path: 'editAppointment', component: EditAppointmentComponent},
   { path: 'addNewMaterial', component: AddNewMaterialComponent},
   { path: 'listOfMaterials', component: ListOfMaterialsComponent},
-  { path: 'editMaterial', component: EditMaterialComponent}
+  { path: 'editMaterial', component: EditMaterialComponent},
+  { path: 'addNewService', component: AddNewServiceComponent},
+  { path: 'listOfServices', component: ListOfServicesComponent}
 ];
 
 @NgModule({

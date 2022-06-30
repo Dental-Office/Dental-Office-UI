@@ -1,0 +1,34 @@
+<form [formGroup]="services" (ngSubmit)="onSubmit()">
+    <div class="row justify-content-md-center">
+      <div class="col-md-3 text-center">
+        <p>Add new Service</p>
+      </div>
+    </div>
+    <div class="row justify-content-md-center">
+      <div class="form-group col-md-3">
+        <label for="serviceName">Service name</label>
+        <input type="text" class="form-control" id="serviceName" 
+          placeholder="Enter service name" formControlName="serviceName">
+        <div *ngIf="services.controls['serviceName'].touched && services.controls['serviceName'].errors?.['required']" class="alert alert-danger">
+          Service name is required!
+        </div>
+        <div *ngIf="services.controls['serviceName'].touched && services.controls['serviceName'].errors?.['minlength']" class="alert alert-danger">
+          Service name must have more than one character!
+        </div>
+        <div *ngIf="services.controls['serviceName'].touched && services.controls['serviceName'].errors?.['pattern']" class="alert alert-danger">
+          Service name can't be a number!
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="col-md-12 text-center">
+          <button type="submit" [disabled]="!services.valid || loading" class="btn btn-primary">
+            Submit
+            <span class="spinner-border spinner-border-sm" role="status" (hidden)="loading = false" *ngIf="loading"></span>
+          </button>
+      </div>
+    </div>
+    <ngb-toast [autohide]="true" class="toast-container-error" [delay]="10000" (hidden)="isErrorToastShown = false" *ngIf="isErrorToastShown">
+      Service is not saved!
+    </ngb-toast>
+</form>

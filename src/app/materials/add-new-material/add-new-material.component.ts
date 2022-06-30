@@ -18,7 +18,6 @@ export class AddNewMaterialComponent implements OnInit {
   constructor(private materialService: MaterialService, private router: Router) {
     this.materials = new FormGroup({
       materialName: new FormControl('', [Validators.required, Validators.minLength(2), Validators.pattern('[a-zA-Z]*')]),
-      // quantity: new FormControl('', [Validators.required])
       quantity: new FormControl('', [Validators.required, Validators.pattern('^[0-9]*$'),  Validators.minLength(1), Validators.maxLength(5)])
     },
       { updateOn: "blur" });
@@ -41,8 +40,6 @@ export class AddNewMaterialComponent implements OnInit {
             this.loading = false;
         }
       });
-      
     }
   }
-
 }
