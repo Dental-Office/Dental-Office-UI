@@ -1,0 +1,13 @@
+p{
+    color:blue;
+    font-size:xx-large;
+    font-style: italic;
+  }
+
+  .toast-container-error {
+    background-color: red;
+    left: 80%;
+    position: fixed;
+    transform: translate(-50%, -300px);
+    z-index: 1200;
+}

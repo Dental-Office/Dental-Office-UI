@@ -13,6 +13,7 @@ import { ListOfMaterialsComponent } from './materials/list-of-materials/list-of-
 import { EditMaterialComponent } from './materials/edit-material/edit-material.component';
 import { AddNewServiceComponent } from './services/add-new-service/add-new-service.component';
 import { ListOfServicesComponent } from './services/list-of-services/list-of-services.component';
+import { EditServiceComponent } from './services/edit-service/edit-service.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -28,7 +29,8 @@ const routes: Routes = [
   { path: 'listOfMaterials', component: ListOfMaterialsComponent},
   { path: 'editMaterial', component: EditMaterialComponent},
   { path: 'addNewService', component: AddNewServiceComponent},
-  { path: 'listOfServices', component: ListOfServicesComponent}
+  { path: 'listOfServices', component: ListOfServicesComponent},
+  { path: 'editDentalServices', component: EditServiceComponent}
 ];
 
 @NgModule({

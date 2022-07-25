@@ -20,6 +20,7 @@ import { ListOfMaterialsComponent } from './materials/list-of-materials/list-of-
 import { EditMaterialComponent } from './materials/edit-material/edit-material.component';
 import { AddNewServiceComponent } from './services/add-new-service/add-new-service.component';
 import { ListOfServicesComponent } from './services/list-of-services/list-of-services.component';
+import { EditServiceComponent } from './services/edit-service/edit-service.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ListOfServicesComponent } from './services/list-of-services/list-of-ser
     ListOfMaterialsComponent,
     EditMaterialComponent,
     AddNewServiceComponent,
-    ListOfServicesComponent
+    ListOfServicesComponent,
+    EditServiceComponent
   ],
   imports: [
     BrowserModule,
