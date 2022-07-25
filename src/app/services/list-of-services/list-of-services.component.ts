@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Service } from '../service';
 import { ServiceService } from '../service.service';
 
@@ -17,7 +18,7 @@ export class ListOfServicesComponent implements OnInit {
   totalPages: number = 0;
   isErrorToastShown = false;
 
-  constructor(private serviceService: ServiceService) { }
+  constructor(private serviceService: ServiceService, private router: Router) { }
 
   ngOnInit(): void {
     this.serviceService.findAll()
@@ -54,6 +55,10 @@ export class ListOfServicesComponent implements OnInit {
          }
       }
   });
+  }
+
+  goToEditPage(id: string | undefined): void {
+    this.router.navigate(['/editDentalServices'], {state: { dentalServiceId: id }});
   }
 
   onSort(sortKey: string) {

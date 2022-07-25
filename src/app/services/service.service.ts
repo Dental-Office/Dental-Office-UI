@@ -36,4 +36,8 @@ private apiUrl = 'http://localhost:8080/dentalService';
         this.apiUrl + '/' + id
       );
     }
+
+    edit(id: number, service: Service): Observable<Service> {
+      return this.http.put<Service>(this.apiUrl + '/' + id, service);
+    }  
 }

@@ -15,7 +15,7 @@
             <span>No results found</span>
         </div>
         <div class="row justify-content-md-center">
-            <div class="form-group col-md-2">
+            <div class="form-group col-md-4">
                 <div style="overflow-x:auto" *ngIf="services.length > 0">
                     <table>
                         <tr>
@@ -24,7 +24,7 @@
                         <tr *ngFor="let d of services" [attr.id]="d.id">
                             <td>{{ d.serviceName }}</td>
                             <td><button id="remove" class="btn btn-danger" (click)="onDelete(d.id)">Delete</button></td>
-                            <!-- <td><button id="edit" class="btn btn-success" (click)="goToEditPage(d.id)">Edit</button></td> -->
+                            <td><button id="edit" class="btn btn-success" (click)="goToEditPage(d.id)">Edit</button></td>
                         </tr>
                     </table>
                 </div>
@@ -34,7 +34,7 @@
             <div class="form-group col-md-3">
                 <div class="container" *ngIf="services.length > 0">
                     <div class="row justify-content-center">
-                        <div class="col-8">
+                        <div class="col-10">
                             <div class="mb-3 row">
                                 <ngb-pagination class="d-flex" [collectionSize]="pageSize * totalPages" [pageSize]="pageSize" [(page)]="pageNumber" (pageChange)="findWidthPaging($event)"></ngb-pagination>
                             </div>
