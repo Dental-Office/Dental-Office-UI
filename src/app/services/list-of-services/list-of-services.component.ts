@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Service } from '../service';
 import { ServiceService } from '../service.service';
@@ -14,6 +15,7 @@ export class ListOfServicesComponent implements OnInit {
   pageNumber!: number;
   pageSize = 10;
   totalPages: number = 0;
+  isErrorToastShown = false;
 
   constructor(private serviceService: ServiceService) { }
 
@@ -38,6 +40,20 @@ export class ListOfServicesComponent implements OnInit {
       this.serviceService.findAll(this.searchTerm, this.pageNumber-1, this.pageSize)
         .subscribe(serviceResponse => this.services = serviceResponse.content);
     }
+  }
+
+  onDelete(id?: string){
+    this.serviceService.delete(id!).subscribe({
+      next: () => {
+        this.serviceService.findAll()
+          .subscribe(services => this.services = services.content)
+      },
+      error: (exception: HttpErrorResponse) => {
+         if (exception.status === 409) {
+          this.isErrorToastShown = true;
+         }
+      }
+  });
   }
 
   onSort(sortKey: string) {

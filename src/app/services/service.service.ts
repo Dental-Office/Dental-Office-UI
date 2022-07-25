@@ -30,4 +30,10 @@ private apiUrl = 'http://localhost:8080/dentalService';
     get(id: number): Observable<Service> {
       return this.http.get<Service>(this.apiUrl + '/' + id);
     }
+
+    delete(id: string): Observable<object> {
+      return this.http.delete(
+        this.apiUrl + '/' + id
+      );
+    }
 }
