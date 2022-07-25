@@ -22,7 +22,7 @@ export class EditMaterialComponent implements OnInit {
       this.router.navigate(['/listOfMaterials']);
     }
     this.materialFormGroup = new FormGroup({
-      materialName: new FormControl('', [Validators.required, Validators.minLength(2), Validators.pattern('[a-zA-Z]*')]),
+      materialName: new FormControl('', [Validators.required, Validators.minLength(2), Validators.pattern('[a-zA-Z ]*')]),
       quantity: new FormControl('', [Validators.required, Validators.pattern('^[0-9]*$'), Validators.minLength(1), Validators.maxLength(5)]),
     },
     { updateOn: "blur" });
