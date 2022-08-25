@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="row justify-content-center">
+                <p>Add new Record </p>
+                <br>
+                <br>
+            </div>
+            <div class="mb-3 row">
+                <label for="table-filtering-search" class="col-xs-3 col-sm-auto col-form-label">Enter text for search:</label>
+                <div class="col-xs-3 col-sm-auto">
+                    <input class="form-control" type="text" name="searchTerm" [(ngModel)]="searchTerm" placeholder="Search" (change)="findAllFiltered($event)">
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-md-center">
+            <div class="form-group col-md-8">    
+                <div style="overflow-x:auto">
+                    <table>
+                        <tr>
+                            <th name="sortKey" (click)="onSort('firstName')">First name</th>
+                            <th name="sortKey" (click)="onSort('lastName')">Last name</th>
+                            <th name="sortKey" (click)="onSort('birthDate')">Birth date</th>
+                            <th name="sortKey" (click)="onSort('phoneNumber')">Phone number</th>
+                        </tr>
+                        <tr *ngFor="let d of patients" [attr.id]="d.id">
+                            <td class="a">{{ d.firstName }}</td>
+                            <td class="a">{{ d.lastName }}</td>
+                            <td class="a">{{ d.birthDate }}</td>
+                            <td class="a">{{ d.phoneNumber }}</td>
+                            <td><button id="addNewRecord" class="btn btn-danger" (click)="goToMaterials(d.id)">Add new Record</button></td>       
+                        </tr>
+                    </table>
+                </div>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-6">
+                        <div class="mb-3 row">
+                            <ngb-pagination class="d-flex" [collectionSize]="pageSize * totalPages" [pageSize]="pageSize" [(page)]="pageNumber" (pageChange)="findWidthPaging($event)"></ngb-pagination>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+

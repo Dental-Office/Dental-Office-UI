@@ -21,6 +21,9 @@ import { EditMaterialComponent } from './materials/edit-material/edit-material.c
 import { AddNewServiceComponent } from './services/add-new-service/add-new-service.component';
 import { ListOfServicesComponent } from './services/list-of-services/list-of-services.component';
 import { EditServiceComponent } from './services/edit-service/edit-service.component';
+import { AddNewRecordComponent } from './patient_record/add-new-record/add-new-record.component';
+import { ListOfRecordsComponent } from './patient_record/list-of-records/list-of-records.component';
+import { MaterialsForAddingToRecordComponent } from './materials/materials-for-adding-to-record/materials-for-adding-to-record.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,10 @@ import { EditServiceComponent } from './services/edit-service/edit-service.compo
     EditMaterialComponent,
     AddNewServiceComponent,
     ListOfServicesComponent,
-    EditServiceComponent
+    EditServiceComponent,
+    AddNewRecordComponent,
+    ListOfRecordsComponent,
+    MaterialsForAddingToRecordComponent
   ],
   imports: [
     BrowserModule,

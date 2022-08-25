@@ -14,6 +14,9 @@ import { EditMaterialComponent } from './materials/edit-material/edit-material.c
 import { AddNewServiceComponent } from './services/add-new-service/add-new-service.component';
 import { ListOfServicesComponent } from './services/list-of-services/list-of-services.component';
 import { EditServiceComponent } from './services/edit-service/edit-service.component';
+import { AddNewRecordComponent } from './patient_record/add-new-record/add-new-record.component';
+import { ListOfRecordsComponent } from './patient_record/list-of-records/list-of-records.component';
+import { MaterialsForAddingToRecordComponent } from './materials/materials-for-adding-to-record/materials-for-adding-to-record.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -30,7 +33,10 @@ const routes: Routes = [
   { path: 'editMaterial', component: EditMaterialComponent},
   { path: 'addNewService', component: AddNewServiceComponent},
   { path: 'listOfServices', component: ListOfServicesComponent},
-  { path: 'editDentalServices', component: EditServiceComponent}
+  { path: 'editDentalServices', component: EditServiceComponent},
+  { path: 'addNewRecord', component: AddNewRecordComponent},
+  { path: 'listOfRecords', component: ListOfRecordsComponent},
+  { path: 'materialsForAddingToRecord', component: MaterialsForAddingToRecordComponent}
 ];
 
 @NgModule({

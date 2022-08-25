@@ -17,3 +17,4 @@ export interface AppointmentRequest {
     date: string;
     time: string;
 }
+

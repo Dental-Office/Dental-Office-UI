@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Appointment } from '../appointment';
+import { AppointmentRequest } from '../appointment';
 import { AppointmentService } from '../appointment.service';
 
 @Component({
@@ -12,6 +12,7 @@ import { AppointmentService } from '../appointment.service';
 export class EditAppointmentComponent implements OnInit {
 
   id: number;
+  patientId: string;
   appointmentFormGroup: FormGroup;
   calendarClosed = false;
   isErrorToastShown = false;
@@ -19,12 +20,13 @@ export class EditAppointmentComponent implements OnInit {
 
   constructor(private appointmentService: AppointmentService, private router: Router) {
     this.id = this.router.getCurrentNavigation()?.extras.state?.['appointmentId'];
+    this.patientId = this.router.getCurrentNavigation()?.extras.state?.['patientId'];
+
     if(!this.id) {
       this.router.navigate(['/listOfAppointments']);
     }
     this.appointmentFormGroup = new FormGroup({
-      firstName: new FormControl('', [Validators.required, Validators.minLength(2), Validators.pattern('[a-zA-Z]*')]),
-      lastName: new FormControl('', [Validators.required, Validators.minLength(2), Validators.pattern('[a-zA-Z]*')]),
+      patientId: new FormControl(''),
       date: new FormControl('', [Validators.required]),
       time: new FormControl('', [Validators.required]),
     },
@@ -37,8 +39,7 @@ export class EditAppointmentComponent implements OnInit {
 
   getAppointment(id: number){
     this.appointmentService.get(id).subscribe((appointment) => {
-      this.appointmentFormGroup.get("firstName")?.setValue(appointment.patient.firstName);
-      this.appointmentFormGroup.get("lastName")?.setValue(appointment.patient.lastName);
+      this.appointmentFormGroup.get("patientId")?.setValue(appointment.patient.id);
       const dateElements = appointment.date.split("-");
       const appointmentDateObject = {
         year: Number(dateElements[0]),
@@ -58,13 +59,13 @@ export class EditAppointmentComponent implements OnInit {
   editAppointment() { 
     this.loading = true;
     if (this.appointmentFormGroup.valid) {
-      const appointment: Appointment = {
+      const appointment: AppointmentRequest = {
         ...this.appointmentFormGroup.value,
         date: this.appointmentFormGroup.value.date.year + "-" + 
           this.appointmentFormGroup.value.date.month + "-" + 
           this.appointmentFormGroup.value.date.day,
         time: this. appointmentFormGroup.value.time.hour + ":" +
-          this.appointmentFormGroup.value.time.second
+          this.appointmentFormGroup.value.time.minute
       }
       this.appointmentService.edit(this.id, appointment).subscribe({
         next: () => {

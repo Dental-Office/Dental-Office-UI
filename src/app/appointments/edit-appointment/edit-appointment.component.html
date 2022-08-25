@@ -6,38 +6,6 @@
     </div>
     <div class="row justify-content-md-center">
       <div class="form-group col-md-3">
-        <label for="firstName">First name</label>
-        <input type="text" class="form-control" 
-        formControlName="firstName">   
-        <div *ngIf="appointmentFormGroup.controls['firstName'].touched && appointmentFormGroup.controls['firstName'].errors?.['required']" class="alert alert-danger">
-          First name is required!
-        </div>
-        <div *ngIf="appointmentFormGroup.controls['firstName'].touched && appointmentFormGroup.controls['firstName'].errors?.['minlength']" class="alert alert-danger">
-          First name must have more than one character!
-        </div>
-        <div *ngIf="appointmentFormGroup.controls['firstName'].touched && appointmentFormGroup.controls['firstName'].errors?.['pattern']" class="alert alert-danger">
-          First name can't be a number!
-        </div> 
-      </div>
-    </div>
-    <div class="row justify-content-md-center">
-      <div class="form-group col-md-3">
-        <label for="lastName">Last name</label>
-        <input type="text" class="form-control"
-        formControlName="lastName">
-        <div *ngIf="appointmentFormGroup.controls['lastName'].touched && appointmentFormGroup.controls['lastName'].errors?.['required']" class="alert alert-danger">
-          Last name is required!
-        </div>
-        <div *ngIf="appointmentFormGroup.controls['lastName'].touched && appointmentFormGroup.controls['lastName'].errors?.['minlength']" class="alert alert-danger">
-          Last name must have more than one character!
-        </div>
-        <div *ngIf="appointmentFormGroup.controls['lastName'].touched && appointmentFormGroup.controls['lastName'].errors?.['pattern']" class="alert alert-danger">
-          Last name can't be a number!
-        </div>
-      </div> 
-    </div>
-    <div class="row justify-content-md-center">
-      <div class="form-group col-md-3">
         <label for="date">Appointment date</label>
         <input type="text" class="form-control" 
         formControlName="date" readonly

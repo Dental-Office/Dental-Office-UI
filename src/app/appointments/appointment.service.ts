@@ -37,7 +37,7 @@ export class AppointmentService {
     return this.http.get<Appointment>(this.apiUrl + '/' + id);
   }
 
-  edit(id: number, appointment: Appointment): Observable<Appointment> {
+  edit(id: number, appointment: AppointmentRequest): Observable<Appointment> {
     return this.http.put<Appointment>(this.apiUrl + '/' + id, appointment);
   }  
 }
