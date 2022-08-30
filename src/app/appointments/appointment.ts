@@ -18,3 +18,8 @@ export interface AppointmentRequest {
     time: string;
 }
 
+export interface AppointmentEditRequest {
+    date: string;
+    time: string;
+}
+
