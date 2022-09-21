@@ -52,8 +52,8 @@ export class AddNewRecordComponent implements OnInit {
       .subscribe(patientsResponse => this.patients = patientsResponse.content);
   }
 
-  goToMaterials(id: string | undefined) {
-    this.router.navigate(['/materialsForAddingToRecord'], {state: {patientId: id}})
+  goToMaterials(id: string | undefined, firstName: string, lastName: string) {
+    this.router.navigate(['/materialsForAddingToRecord'], {state: {patientId: id, firstName: firstName, lastName: lastName}})
   }
 
   // saveNewRecord(id: string | undefined) {

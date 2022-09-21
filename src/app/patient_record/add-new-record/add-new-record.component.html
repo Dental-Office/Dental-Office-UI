@@ -29,7 +29,7 @@
                             <td class="a">{{ d.lastName }}</td>
                             <td class="a">{{ d.birthDate }}</td>
                             <td class="a">{{ d.phoneNumber }}</td>
-                            <td><button id="addNewRecord" class="btn btn-danger" (click)="goToMaterials(d.id)">Add new Record</button></td>       
+                            <td><button id="addNewRecord" class="btn btn-danger" (click)="goToMaterials(d.id, d.firstName, d.lastName)">Add new Record</button></td>       
                         </tr>
                     </table>
                 </div>

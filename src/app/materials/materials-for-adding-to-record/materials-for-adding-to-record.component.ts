@@ -14,6 +14,8 @@ export class MaterialsForAddingToRecordComponent implements OnInit {
 
   materials: Material[] = [];
   patientId: string;
+  firstName: string;
+  lastName: string;
   searchTerm: string = "";
   pageNumber!: number;
   pageSize = 10;
@@ -24,6 +26,8 @@ export class MaterialsForAddingToRecordComponent implements OnInit {
 
   constructor(private materialService: MaterialService, private recordService: RecordService, private router: Router) {
     this.patientId = this.router.getCurrentNavigation()?.extras.state?.['patientId'];
+    this.firstName = this.router.getCurrentNavigation()?.extras.state?.['firstName'];
+    this.lastName = this.router.getCurrentNavigation()?.extras.state?.['lastName'];
   }
 
   ngOnInit(): void {
@@ -76,7 +80,5 @@ export class MaterialsForAddingToRecordComponent implements OnInit {
       error:() => {}
       
     });
-    
   }
-
 }
