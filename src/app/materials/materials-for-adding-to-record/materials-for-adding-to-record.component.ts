@@ -72,8 +72,6 @@ export class MaterialsForAddingToRecordComponent implements OnInit {
 
   removeMaterial(index: number){
 
-    console.log("Za brisanje: " + index);
-
     if(index !== -1) {
       this.addedMaterials.splice(index, 1);
     }
