@@ -22,12 +22,15 @@ export class MaterialsForAddingToRecordComponent implements OnInit {
   totalPages: number = 0;
   isErrorToastShown = false;
   loading = false;
-  materialIds: String[] = [];
+  materialIds: string[] = [];
+  materialName: string;
+  addedMaterials: string[] = [];
 
   constructor(private materialService: MaterialService, private recordService: RecordService, private router: Router) {
     this.patientId = this.router.getCurrentNavigation()?.extras.state?.['patientId'];
     this.firstName = this.router.getCurrentNavigation()?.extras.state?.['firstName'];
     this.lastName = this.router.getCurrentNavigation()?.extras.state?.['lastName'];
+    this.materialName = this.router.getCurrentNavigation()?.extras.state?.['materialName'];
   }
 
   ngOnInit(): void {
@@ -58,11 +61,22 @@ export class MaterialsForAddingToRecordComponent implements OnInit {
       .subscribe(materialResponse => this.materials = materialResponse.content);
   }
 
-  goToMaterials(id: string) {
+  goToMaterials(id: string, materialName: string) {
 
     this.materialIds.push(id);
 
-    this.router.navigate(['/materialsForAddingToRecord'])
+    this.router.navigate(['/materialsForAddingToRecord'], {state: {materialName: materialName}});
+
+    this.addedMaterials.push(materialName);
+  }
+
+  removeMaterial(index: number){
+
+    console.log("Za brisanje: " + index);
+
+    if(index !== -1) {
+      this.addedMaterials.splice(index, 1);
+    }
   }
 
   saveNewRecord() {

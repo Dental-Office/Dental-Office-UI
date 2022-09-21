@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-5">
+        <div class="col-md-12">
             <div class="row justify-content-center">
                 <p>Add new Material to the Record for Patient: {{firstName }} {{lastName}}</p>
                 <br>
@@ -15,7 +15,7 @@
         </div>
 
         <div class="row justify-content-md-center">
-            <div class="form-group col-md-4">    
+            <div class="form-group col-md-7">    
                 <div style="overflow-x:auto">
                     <table>
                         <tr>
@@ -25,7 +25,7 @@
                         <tr *ngFor="let m of materials" [attr.id]="m.id">
                             <td class="a">{{ m.materialName }}</td>
                             <td class="a">{{ m.quantity }}</td>
-                            <td><button id="addNewRecord" class="btn btn-success" (click)="goToMaterials(m.id!)">Add</button></td>       
+                            <td><button id="addNewRecord" class="btn btn-success" (click)="goToMaterials(m.id!, m.materialName)">Add</button></td>
                         </tr>
                     </table>
                     <div class="container">
@@ -36,13 +36,25 @@
                             </div>
                         </div>
                     </div>
-                    
                 </div>
             </div>
-        </div>          
+
+            <div class="form-group col-md-4">    
+                <table>
+                    <tr>
+                        <th>Added materials</th>
+                    </tr>
+                    <tr *ngFor="let aM of addedMaterials; index as i" [attr.materialName]="aM">
+                        <td class="a">{{ aM }} {{ i }}</td>
+                        <td><button id="removeMaterial" class="btn btn-success" (click)="removeMaterial(i)">Remove</button></td>
+                    </tr>
+                </table>
+            </div>
+        </div>  
+    
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-2">
+                <div class="col-9">
                     <div class="mb-6 row">
                         <ngb-pagination class="d-flex" [collectionSize]="pageSize * totalPages" [pageSize]="pageSize" [(page)]="pageNumber" (pageChange)="findWidthPaging($event)"></ngb-pagination>
                     </div>

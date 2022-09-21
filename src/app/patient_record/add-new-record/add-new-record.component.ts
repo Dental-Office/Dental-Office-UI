@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Patient } from 'src/app/patients/patient';
 import { PatientService } from 'src/app/patients/patient.service';
-import { RecordRequest } from '../record';
 import { RecordService } from '../record.service';
 
 @Component({

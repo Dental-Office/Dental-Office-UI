@@ -8,3 +8,4 @@ export interface MaterialResponse {
     content: Material[];
     totalPages: number;
 }
+
