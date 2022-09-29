@@ -74,6 +74,7 @@ export class MaterialsForAddingToRecordComponent implements OnInit {
 
     if(index !== -1) {
       this.addedMaterials.splice(index, 1);
+      this.materialIds.splice(index, 1);
     }
   }
 

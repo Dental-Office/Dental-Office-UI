@@ -45,7 +45,7 @@
                         <th>Added materials</th>
                     </tr>
                     <tr *ngFor="let aM of addedMaterials; index as i" [attr.materialName]="aM">
-                        <td class="a">{{ aM }} {{ i }}</td>
+                        <td class="a">{{ aM }}</td>
                         <td><button id="removeMaterial" class="btn btn-success" (click)="removeMaterial(i)">Remove</button></td>
                     </tr>
                 </table>
