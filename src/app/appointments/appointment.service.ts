@@ -8,7 +8,7 @@ import { Appointment, AppointmentEditRequest, AppointmentRequest, AppointmentRes
 })
 export class AppointmentService {
 
-  private apiUrl = 'http://localhost:8080/appointment';
+  private apiUrl = 'http://web-app-loadbalancer-66924697.us-west-2.elb.amazonaws.com/appointment';
 
   constructor(private http:HttpClient) {
   }

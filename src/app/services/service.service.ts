@@ -8,7 +8,7 @@ import { Service, ServiceResponse } from './service';
   providedIn: 'root'
 })
 export class ServiceService {
-private apiUrl = 'http://localhost:8080/dentalService';
+private apiUrl = 'http://web-app-loadbalancer-66924697.us-west-2.elb.amazonaws.com/dentalService';
   
     constructor(private http:HttpClient) {
      }
