@@ -8,7 +8,7 @@ import { Patient, PatientsResponse } from './patient';
 })
 export class PatientService {
 
-  private apiUrl = 'http://web-app-loadbalancer-66924697.us-west-2.elb.amazonaws.com/patient';
+  private apiUrl = 'http://web-app-loadbalancer-1986901367.us-west-2.elb.amazonaws.com/patient';
 
   constructor(private http:HttpClient) {
    }
